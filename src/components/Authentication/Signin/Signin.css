@@ -1,0 +1,56 @@
+section {
+	position: relative;
+	transition: 0.5s;
+}
+
+.card {
+	width: 500px;
+	max-height: 680px;
+}
+
+.center {
+	top: 50%;
+	left: 50%;
+	transform:  translate(-50%, -50%);
+}
+
+.all {
+	width: 150%;
+}
+
+.all > * {
+	width: 33.3333%;
+}
+
+#page:checked ~ .all .two .log {
+	opacity: 0;
+}
+
+#page:checked ~ .all {
+	transform: translateX(-33.333%)
+}
+
+
+
+#page:not(:checked) ~ .all .two .reg {
+	opacity: 0;
+}
+
+input {
+	outline: none !important;
+}
+
+@media (max-width: 1024px){
+	.card {
+		width: auto;
+	}
+	.all > * {
+		width: 100%;
+	}
+	.all {
+		width: 100%;
+	}
+	#page:checked ~ .all {
+		transform: translateY(-425px)
+	}
+}
