@@ -1,6 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Signin from './components/Authentication/Signin/Signin';
+import SignIn from './components/Authentication/SignIn/SignIn';
+import SignUp from './components/Authentication/SignUp/SignUp';
+import Home from './components/Home/Home/Home';
+
 import NavigationBar from './components/NavigationBar/NavigationBar';
 
 function App() {
@@ -8,10 +11,12 @@ function App() {
     <div className="App">
 
       <NavigationBar />
-      <h1>Hello </h1>
 
       <Routes>
-        <Route path='/authentication' element={<Signin />}></Route>
+        <Route path='/' element={<Home />}></Route>
+        <Route path='/home' element={<Home />}></Route>
+        <Route path='/signIn' element={<SignIn />}></Route>
+        <Route path='/signUp' element={<SignUp />}></Route>
       </Routes>
 
 
