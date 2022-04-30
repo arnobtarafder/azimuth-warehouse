@@ -1,0 +1,16 @@
+.banner {
+    position: relative;
+}
+.slider{
+    height: 100vh;
+    top: 0;
+}
+.overlay{
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    top: 0;
+}
+.content{
+    width: 60%;
+    margin: 160px auto 0;
+}
