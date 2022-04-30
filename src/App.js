@@ -6,6 +6,7 @@ import Blogs from './components/Blogs/Blogs';
 import Home from './components/Home/Home/Home';
 
 import NavigationBar from './components/NavigationBar/NavigationBar';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/signIn' element={<SignIn />}></Route>
         <Route path='/signUp' element={<SignUp />}></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
+        <Route path='*' element={<NotFound />}></Route>
       </Routes>
 
     </div>
