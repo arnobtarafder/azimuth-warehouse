@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "question": "Difference between `javascript` and `nodejs`",
+        "answer": "",
+        "img": "https://i.ibb.co/dGDkr4v/1.jpg",
+        "writer": ""
+    },
+    {
+        "id": 2,
+        "question": "When should you use `nodejs` and when should you use `mongodb`?",
+        "answer": "",
+        "img": "https://i.ibb.co/tY8dmnP/2.jpg",
+        "writer": ""
+    },
+    {
+        "id": 3,
+        "question": "Differences between `sql` and `nosql` databases.",
+        "answer": "",
+        "img": "https://i.ibb.co/Yh04YVw/3.jpg",
+        "writer": ""
+    },
+    {
+        "id": 4,
+        "question": "What is the purpose of `jwt` and how does it work?",
+        "answer": "",
+        "img": "https://i.ibb.co/ZX2Cbkn/4.jpg",
+        "writer": ""
+    }
+]

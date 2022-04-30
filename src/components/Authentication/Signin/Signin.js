@@ -34,7 +34,7 @@ const SignIn = () => {
     errorElement = <p className="text-danger">{error?.message}</p>;
   }
   if (loading || sending) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
 
   const handleSubmit = (event) => {
