@@ -5,6 +5,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from "../../firebase.init";
 
+
+
 const NavigationBar = () => {
 
     const [user] = useAuthState(auth);
@@ -43,9 +45,14 @@ const NavigationBar = () => {
 
               <>
               
-              <Nav.Link  className='text-dark' as={Link} to="/home#services">Inventory Items</Nav.Link> 
+           <Nav>
+           <Nav.Link  className='text-dark' as={Link} to="/inventory">Inventory Items</Nav.Link> 
               
-              <Nav.Link className='text-dark' as={Link} to="/blogs">Manage Inventories</Nav.Link>
+              <Nav.Link className='text-dark' as={Link} to="/manageInventory">Manage Inventories</Nav.Link>
+
+              <Nav.Link className='text-dark' as={Link} to="/addItems">Add Inventories</Nav.Link>
+           </Nav>
+
               
               </>
 
@@ -53,6 +60,8 @@ const NavigationBar = () => {
 
           </Nav.Item>
           <Nav>
+
+
 
             <Nav.Item>
               {
@@ -71,7 +80,8 @@ const NavigationBar = () => {
 
             <Nav.Item>
 
-              {
+              
+          {
                 user ?
                   <Link to='/' className='nav-link'>
                     <button onClick={handleSignOut}
@@ -89,7 +99,7 @@ const NavigationBar = () => {
                     </button>
                   </Link>
               }
-
+     
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>

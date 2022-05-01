@@ -5,6 +5,7 @@ import SignUp from './components/Authentication/SignUp/SignUp';
 import Blogs from './components/Blogs/Blogs';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home/Home';
+import InventoryItems from './components/Inventory/InventoryItems/InventoryItems';
 
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import NotFound from './components/NotFound/NotFound';
@@ -14,13 +15,15 @@ function App() {
     <div className="App">
 
       <NavigationBar />
-      
+
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
         <Route path='/signIn' element={<SignIn />}></Route>
         <Route path='/signUp' element={<SignUp />}></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
+        <Route path='/inventory' element={<InventoryItems />}></Route>
+        <Route path='/inventory/:id' element={<InventoryItems />}></Route>
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
 

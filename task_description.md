@@ -23,7 +23,15 @@ We have a sample task for you.
 
 4. Clicking on the button will take the user to the `inventory/:id` route. This route will be a private/protected route. Please make sure that the private route redirects to the login page if the user is not logged in. After login, the user will be redirected to the page he/she wanted to go to. Also, after reloading the page of a private route, the user is not redirected to the login page.
 
-5. The `inventory/:id` page should display detailed item information like id, name, image, description, price, quantity, supplier name, sold, etc. This page will have a Button named `delivered`. Once this button is clicked, it will reduce the quantity of the item by one. Make sure this data is saved on the database, and the change in quantity is displayed on the website. 
+5. The `inventory/:id` page should display detailed item information like 
+id, 
+name, 
+image, 
+description, 
+price, 
+quantity, 
+supplier name, 
+sold, etc. This page will have a Button named `delivered`. Once this button is clicked, it will reduce the quantity of the item by one. Make sure this data is saved on the database, and the change in quantity is displayed on the website. 
 
 6. There will be a small form on the `inventory/:id` page. The from will say, restock the items. You will have an input field where you can put some numbers. And hitting the button will increase the quantity of the item.
 
@@ -64,7 +72,7 @@ We have a sample task for you.
 
 4. Meaningful `readme.md` file containing your website name, a short description, link to your live site. And at least five bullet points mention your website's different features and functionality.
 
-5. Make the website responsive. Make sure the site looks different on desktop and mobile responsive. Tablet responsive is optional
+5. Make the website responsive. Make sure the site looks different on desktop and mobile responsive. Tablet responsive is optional.
 
 6. Make the website meaningful and consistent in look and feel. Give your website a relevant name. Images and all the content of the website have to be relevant. No `lorem ipsum` please. 
 

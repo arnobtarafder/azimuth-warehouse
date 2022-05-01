@@ -46,7 +46,7 @@ const SignIn = () => {
   };
 
   const navigateRegister = () => {
-    navigate("/singUp");
+    navigate("/signUp");
   };
 
   const resetPassword = async () => {
@@ -61,7 +61,7 @@ const SignIn = () => {
 
   return (
     <div className="form-body container mx-auto">
-      <div className="container-main-form " id="container">
+      <div className="container-main-form" id="container">
         <div className="form-container-section log-in-container">
           <form onSubmit={handleSubmit} className="form">
             <h1>Sign in</h1>
@@ -79,7 +79,7 @@ const SignIn = () => {
               Forgot Password ?{" "}
               
               <button 
-			  	className="text-primary text-decoration-none pe-auto bg-white border-0 ps-1 fw-normal"
+			  	className="text-primary text-decoration-none pe-auto bg-white border-0 ps-1 fw-lighter fs-5"
 			   	onClick={resetPassword}
 			   >Reset</button>
             </p>
