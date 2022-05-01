@@ -83,7 +83,7 @@ const NavigationBar = () => {
                   :
                   <Link to='/signUp' className='nav-link'>
                     <button
-                      className='btn btn-danger rounded-pill'
+                      className='btn btn-danger'
                     >
                       Sign up
                     </button>

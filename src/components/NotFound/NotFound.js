@@ -1,44 +1,51 @@
 import React from 'react';
-import './NotFound.css'
+import { Link, useNavigate } from 'react-router-dom';
+import './NotFound.css';
+
+
 
 const NotFound = () => {
+  const navigate = useNavigate();
 
-    // const handleBack = () => {
-    //     window.document.re
-    // }
 
-    return (
-        <div className='NotFound-Body'>
-            <div id="background"></div>
-<div className="top">
-  <h1>404</h1>
-  <h3>page not found</h3>
-</div>
-<div className="NotFound-Container">
-  <div className="ghost-copy">
-    <div className="one"></div>
-    <div className="two"></div>
-    <div className="three"></div>
-    <div className="four"></div>
-  </div>
-  <div className="ghost">
-    <div className="face">
-      <div className="eye"></div>
-      <div className="eye-right"></div>
-      <div className="mouth"></div>
-    </div>
-  </div>
-  <div className="shadow"></div>
-</div>
-<div className="bottom">
-  <p>Boo, looks like a ghost stole this page!</p>
- 
-  <div className="buttons">
-    <button  className="btn">Back</button>
-    <button>Back to home <i className="far fa-hand-point-right"></i></button>  </div>
-</div>
+  // const handleBack = () => {
+  //     window.document.re
+  // }
+
+  return (
+    <div className='NotFound-Body container-fluid h-100 w-100 py-5'>
+      <div id="background"></div>
+      <div className="top">
+        <h1>404</h1>
+        <h3>page not found</h3>
+      </div>
+      <div className="NotFound-Container">
+        <div className="ghost-copy">
+          <div className="one"></div>
+          <div className="two"></div>
+          <div className="three"></div>
+          <div className="four"></div>
         </div>
-    );
+        <div className="ghost">
+          <div className="face">
+            <div className="eye"></div>
+            <div className="eye-right"></div>
+            <div className="mouth"></div>
+          </div>
+        </div>
+        <div className="shadow"></div>
+      </div>
+      <div className="bottom">
+        <p>Boo, looks like a ghost stole this page!</p>
+
+        <div className="buttons">
+          <button className="NotFound-Button" onClick={() => navigate(-1)}>Back</button>
+        
+          <button onClick={() => navigate("/home")} className='NotFound-Button'>home <i className="far fa-hand-point-right"></i></button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default NotFound;

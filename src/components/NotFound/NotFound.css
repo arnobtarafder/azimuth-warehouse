@@ -1,13 +1,14 @@
-
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Lato');
 
 
 .NotFound-Body {
-  background: light;
+  background: rgb(233, 247, 253);
+  height: 100vh;
+  width: 100vh;
 }
 
 .top {
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 
 .NotFound-Container {
@@ -168,9 +169,6 @@ p {
   text-transform: uppercase;
 }
 
-.search {
-  text-align: center;
-}
 
 .buttons {
   display: flex;
@@ -179,40 +177,7 @@ p {
   margin-top: 10px;
 }
 
-/*search style*/
-
-.search-bar {
-  border: 1px solid gray;
-  padding: 5px;
-  height: 20px;
-  margin-left: -30px;
-  width: 200px;
-  outline: none;
-}
-.search-bar:focus {
-  border: 1px solid light;
-}
-
-.search-btn {
-  position: absolute;  
-  width: 30px;
-  height: 32px;
-  border: 1px solid gray;
-  background: gray;
-  text-align: center;
-  color: white;
-  cursor: pointer;
-  font-size: 1em;
-  outline: none;
-}
-
-.search-btn:hover {
-  background: white;
-  border: 1px solid white;
-  color: gray;
-  transition: all .2s ease;
-}
-.btn {
+.NotFound-Button {
   background: white;
   padding: 15px 20px;
   margin: 5px;
@@ -222,9 +187,10 @@ p {
   font-size: .6em;
   letter-spacing: 1px;
   border: 0;
+  text-decoration: none;
 }
 
-.btn:hover {
+.NotFound-Button:hover {
   background: gray;
   transition: all .4s ease-out;
 }

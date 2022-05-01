@@ -6,7 +6,7 @@ We have a sample task for you.
 ## Website Purpose:
 1. Your website must be related to multiple items warehouse/inventory management websites. Some examples of inventory management could be: managing inventory of any types of products like- grocery stock, spice warehouse, fruits warehouse, books, perfumes, dresses, gym equipment, bikes, electronics (TV, fridge, microwave, laptop, computer, smartphone, etc.), ***furniture***, hiking gears, sports gear, outdoor camping gears, Vehicle/fleet inventory (car, truck, motor bike, bicycle), toys, etc. However, your website can not be a ticket selling or an e-commerce site. **(done)**
 
-2. Make sure your design and website idea are unique. First, finalize your idea (what website you want to build). Then google the site design or visit themeforest to get your website idea. However, your website can not be related to your previous assignments or any practice project displayed in the course or our conceptual sessions. 
+2. Make sure your design and website idea are unique. First, finalize your idea (what website you want to build). Then google the site design or visit themeforest to get your website idea. However, your website can not be related to your previous assignments or any practice project displayed in the course or our conceptual sessions.
 
 3. Make sure your code or design doesn't match any of the projects implemented in our course. 
 
@@ -31,34 +31,34 @@ We have a sample task for you.
 
 8. ON the Manage Inventories page, there will be a button named `add new item`. You can change the name of the button if you want. You will be taken to the add inventory item page by clicking on this button. There will be able to add a new inventory item. Feel free to use, react hook form or html5 form. On this page, you can put an input field to put an image url. (For simplicity, you can upload the image to imgbb or other images hosting website and then put the url on the input field)
 
-9. Implement email/password-based authentication and at least one social login(google, facebook, github, etc.) authentication. Once a user is logged in, the logout/sign-out button should appear on the header, signing out the user once clicked.
+9. Implement email/password-based authentication and at least one social login(google, facebook, github, etc.) authentication. Once a user is logged in, the logout/sign-out button should appear on the header, signing out the user once clicked. **(done)**
 
-10. If a user is logged in, he/she will see more options like `Manage Items`, `Add Item`, `My items`, `Logout`. Based on your website idea, you can change the name of these menu items. 
+10. If a user is logged in, he/she will see more options like `Manage Items`, `Add Item`, `My items`, `Logout`. Based on your website idea, you can change the name of these menu items.  **(done)**
 
 11. On the My Items page, the logged-in user will see only his/her Items. If the user wants, he/she should be able to cancel/delete any item. Ask for a confirmation message before deleting or canceling an item. Using browser confirmation dialog is ok. So, you will be able to delete an item either from the `Manage Inventories` page also, from the `My Items` page.
 
 
 12. No Fake data (data must be hosted on the database). Database could be mongodb atlas or any other noSQL database.
 
-13. Add two more routes. one route will be `blogs`. You will need to answer at least three questions on the blog page. This won't be a protected route. We recommend answering all four questions.
+13. Add two more routes. one route will be `blogs`. You will need to answer at least three questions on the blog page. This won't be a protected route. We recommend answering all four questions.  **(done)**
 
-    13.1 Difference between `javascript` and `nodejs`
+    13.1 Difference between `javascript` and `nodejs`  **(done)**
     
-    13.2 When should you use `nodejs` and when should you use `mongodb`
+    13.2 When should you use `nodejs` and when should you use `mongodb`  **(done)**
 
-    13.3 Differences between `sql` and `nosql` databases.
+    13.3 Differences between `sql` and `nosql` databases.  **(done)**
 
-    13.4 What is the purpose of `jwt` and how does it work
+    13.4 What is the purpose of `jwt` and how does it work  **(done)**
 
-14. Create a meaningful 404 page (not found page)
+14. Create a meaningful 404 page (not found page)  **(done)**
 
 
 
 
 ### Bonus: 
-1. Display error when user email address or password don't match. 
+1. Display error when user email address or password don't match.  **(done)**
 
-2. Send Email Verification. Don't worry if the email goes to the spam folder or it doesn't go at all. As long as your code is there, you will be fine. Add a link for Password reset (use toast)
+2. Send Email Verification. Don't worry if the email goes to the spam folder or it doesn't go at all. As long as your code is there, you will be fine. Add a link for Password reset (use toast)  **(done)**
 
 3. At least 12 meaningful GitHub commits for the client-side and at least 6 meaningful commits for the server-side repository.
 
@@ -72,11 +72,11 @@ We have a sample task for you.
 
 8. Add a loading spinner on the home page and the login/register page. If data is loading, a spinner will be displayed.
 
-9. use the Environment variable on both the client and server-side. `.env` file hides db user and db password and another server-side secret info. Use .gitignore file on the server-side. 
+9. use the Environment variable on both the client and server-side. `.env` file hides db user and db password and another server-side secret info. Use .gitignore file on the server-side.  **(done)**
 
 10. Implement the basic version of the `jwt` token for email/password based authentication. Upon login, you will create a jwt token and store it on the client-side, and for the `My Items` page, you will send the token with the call and verify the user. Implementing 401 and 403 is optional. For social login, jwt token implementation is optional.
 
-11. Create a `stackoverflow` profile and post a question or an answer at the time of submitting your assignment. You will submit the link to the stackoverflow question. If you do not want to add a question, you can add an answer on stackoverflow. If you can't add a stackoverflow question/answer, you can submit a github issue to any library that you are using. Your question or answer has to be a meaningful question or answer.
+11. Create a `stackoverflow` profile and post a question or an answer at the time of submitting your assignment. You will submit the link to the stackoverflow question. If you do not want to add a question, you can add an answer on stackoverflow. If you can't add a stackoverflow question/answer, you can submit a github issue to any library that you are using. Your question or answer has to be a meaningful question or answer.  **(done)**
 
 
 ### Optional but highly encourage:
