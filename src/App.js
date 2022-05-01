@@ -3,6 +3,7 @@ import './App.css';
 import SignIn from './components/Authentication/SignIn/SignIn';
 import SignUp from './components/Authentication/SignUp/SignUp';
 import Blogs from './components/Blogs/Blogs';
+import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home/Home';
 
 import NavigationBar from './components/NavigationBar/NavigationBar';
@@ -13,6 +14,7 @@ function App() {
     <div className="App">
 
       <NavigationBar />
+      
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
@@ -21,6 +23,8 @@ function App() {
         <Route path='/blogs' element={<Blogs />}></Route>
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
+
+      <Footer />
 
     </div>
   );
