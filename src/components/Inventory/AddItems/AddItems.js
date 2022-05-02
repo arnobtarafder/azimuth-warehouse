@@ -3,6 +3,8 @@ import auth from '../../../firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Loading from "../../Loading/Loading"
 import { useForm } from 'react-hook-form';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const AddItems = () => {
@@ -25,7 +27,11 @@ const AddItems = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(result => console.log(result))
+            .then(result => {
+                if (result.acknowledged === true) {
+                    toast.success("Product added successfully")
+                }
+            })
     };
 
 
@@ -45,6 +51,8 @@ const AddItems = () => {
                 
                 <input className='mb-2 py-2 fs-5 btn btn-outline-primary' type="submit" />
             </form>
+
+            <ToastContainer />
         </div>
     );
 };

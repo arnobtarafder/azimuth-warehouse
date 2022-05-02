@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const Inventory = ({ product }) => {
     const navigate = useNavigate()
 
-    const handleManageButton = id => {
+    const handleManageInventory = id => {
 
         navigate(`/inventory/${id}`)
     }
@@ -28,7 +28,7 @@ const Inventory = ({ product }) => {
                         <small>Quantity: {product?.quantity}</small>
                     </div>
                     <div>
-                        <Button onClick={() => handleManageButton(product._id)} className='px-3' variant="outline-primary">Manage</Button>
+                        <Button onClick={() => handleManageInventory(product._id)} className='px-3' variant="outline-primary">Manage</Button>
                     </div>
                 </div>
             </div>

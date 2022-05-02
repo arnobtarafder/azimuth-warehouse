@@ -1,58 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
-// import useInventoryProducts from '../../../Hooks/useInventoryProducts';
-
+import useInventoryProducts from '../../../hooks/useInventoryProducts';
 import './InventoryItem.css'
 
 const InventoryItem = () => {
     const { id } = useParams()
     const navigate = useNavigate()
-    const [laptop, setLaptop] = useState({})
-    const [delivered, setDelivered] = useState({})
+    const [furniture, setFurniture] = useState({})
+    const [products] = useInventoryProducts();
 
     useEffect(() => {
         const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
         fetch(url)
             .then(res => res.json())
-            .then(data => setLaptop(data))
-    }, [id])
+            .then(data => setFurniture(data))
+    }, [id, furniture?.quantity])
     
-    let itemQuantity = parseInt(laptop?.quantity)
-    let newQuantity = itemQuantity - 1;
-    const handleDelivered = (event) => {
-        event.preventDefault();
+   
+    let itemQuantity = parseFloat(furniture?.quantity)
+    let quantityInEveryClick = itemQuantity - 1;
 
-        const quantity = event.target.quantity.value;
-        if(!quantity || quantity < 0) {
-            return;
-        }
-
-        // itemQuantity = newQuantity--
-        // console.log(itemQuantity)
-        const url = `http://localhost:5000/products/${id}`;
-
+    const handleDelivered = (id) => {
+        const result = quantityInEveryClick--
+        const quantity = result.toString()
+        const output = { quantity }
+        console.log(output)
+        const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
         fetch(url, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(itemQuantity)
+            body: JSON.stringify(output)
         })
             .then(res => res.json())
             .then(data => {
-                console.log('success', data)
-                window.alert("Qantity added")
-                window.location.reload();
+                let updatedProduct = products.find(product => product.quantity === furniture.quantity)
+                let newQuantity = result.toString()
+                const newObject = { ...updatedProduct, quantity: newQuantity }
+                setFurniture(newObject)
+                // updatedProduct.quantity = result.toString()
+                // setLaptop(updatedProduct)
+                // console.log(updatedProduct)
+                // console.log('success', data)
             })
-
     }
 
     const handleManageInventories = () => {
         navigate('/manageInventory')
     }
 
-    let quantity = parseInt(laptop?.quantity);
+
 
     const handleRestock = () => {
         const quantity = window.prompt("Enter the quantity", "")
@@ -76,15 +75,20 @@ const InventoryItem = () => {
             },
             body: JSON.stringify(output + quantity)
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log('success', data)
-                window.location.reload();
-            })
+        .then(res => res.json())
+        .then(data => {
+            let updatedProduct = products.find(product => product.quantity === furniture.quantity)
+            // updatedProduct.quantity = quantity
+            // setLaptop(updatedProduct)
+            console.log('success', data)
+            let newQuantity = quantity
+            const newObject = { ...updatedProduct, quantity: newQuantity }
+            setFurniture(newObject)
+            console.log(newObject)
+        })
       }
 
     }
-
 
 
     return (
@@ -93,42 +97,37 @@ const InventoryItem = () => {
                 <div className="card text-center mb-3" >
                     <div className="row g-0">
                         <div className="col-md-6 col-sm-12">
-                            <img src={laptop.img} className="img-fluid rounded-start  border-bottom" alt="..." />
-                            <h3 className="card-title">{laptop.title}</h3>
+                            <img src={furniture.img} className="img-fluid rounded-start  border-bottom" alt="..." />
+                            <h3 className="card-title">{furniture.title}</h3>
                         </div>
                         <div className="col-md-6 col-sm-12">
                             <div className="card-body mt-3">
 
                                 <div className="card w-75 mx-auto text-start " style={{ "width": "18rem" }}>
                                     <div className="card-header">
-                                        Name :  {laptop.title}
+                                        Name :  {furniture.title}
                                     </div>
                                     <div className="card-header">
-                                        Supplied By :  {laptop.Supplier}
+                                        Supplied By :  {furniture.Supplier}
                                     </div>
                                     <div className="card-header">
                                         Description :
                                     </div>
                                     <ul className="list-group list-group-flush">
-                                        <li className="list-group-item"> <small>Model: {laptop.description?.model} </small>  </li>
-                                        <li className="list-group-item"> <small>Processor: {laptop.description?.processor}  </small> </li>
-                                        <li className="list-group-item"> <small> Memory: {laptop.description?.memory}  </small></li>
-                                        <li className="list-group-item"> <small> Storage: {laptop.description?.storage}  </small></li>
-                                        <li className="list-group-item"> <small>Display: {laptop.description?.display} </small>  </li>
+                                        <li className="list-group-item"> <small>Model: {furniture.description?.model} </small>  </li>
+                                        <li className="list-group-item"> <small>Processor: {furniture.description?.processor}  </small> </li>
+                                        <li className="list-group-item"> <small> Memory: {furniture.description?.memory}  </small></li>
+                                        <li className="list-group-item"> <small> Storage: {furniture.description?.storage}  </small></li>
+                                        <li className="list-group-item"> <small>Display: {furniture.description?.display} </small>  </li>
                                     </ul>
                                     <div className="card-header">
-                                        Price : $ {laptop.price}
+                                        Price : $ {furniture?.price}
                                     </div>
                                     <div className="card-header">
-                                        Quantity :  {laptop.quantity}
+                                        Quantity :  {furniture?.quantity}
                                     </div>
                                     <div className="card-header">
-                                        {/* <Button onClick={handleDelivered} variant='outline-primary'>Delivered</Button> */}
-                                        <form onSubmit={handleDelivered}>
-                                            <input type="number" name="quantity" id="" />
-                                            <input type="submit" value="Submit" />
-                                        </form>
-
+                                        <Button onClick={() => handleDelivered(furniture._id)} variant='outline-primary'>Delivered</Button>
                                         <Button onClick={handleRestock} variant='outline-primary px-3 mx-3'>Restock</Button>
                                     </div>
                                 </div>
