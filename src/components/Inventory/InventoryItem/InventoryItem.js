@@ -1,33 +1,92 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
-import useInventoryProducts from '../../../hooks/useInventoryProducts';
-// import useProducts from '../../Hooks/useProducts';
+// import useInventoryProducts from '../../../Hooks/useInventoryProducts';
+
 import './InventoryItem.css'
-
-
 
 const InventoryItem = () => {
     const { id } = useParams()
     const navigate = useNavigate()
-    const [item, setItem] = useInventoryProducts()
     const [laptop, setLaptop] = useState({})
-    console.log(laptop)
+    const [delivered, setDelivered] = useState({})
+
     useEffect(() => {
-        const url = `http://localhost:5000/products/${id}`
+        const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setLaptop(data))
     }, [id])
-    let itemQuantity = parseFloat(laptop?.quantity)
-    let newQuantity = itemQuantity - 1
-    const handleDelivered = () => {
-        const result = newQuantity--
+    
+    let itemQuantity = parseInt(laptop?.quantity)
+    let newQuantity = itemQuantity - 1;
+    const handleDelivered = (event) => {
+        event.preventDefault();
+
+        const quantity = event.target.quantity.value;
+        if(!quantity || quantity < 0) {
+            return;
+        }
+
+        // itemQuantity = newQuantity--
+        // console.log(itemQuantity)
+        const url = `http://localhost:5000/products/${id}`;
+
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(itemQuantity)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('success', data)
+                window.alert("Qantity added")
+                window.location.reload();
+            })
 
     }
+
     const handleManageInventories = () => {
-        navigate('/manageInventories')
+        navigate('/manageInventory')
     }
+
+    let quantity = parseInt(laptop?.quantity);
+
+    const handleRestock = () => {
+        const quantity = window.prompt("Enter the quantity", "")
+        const output = { quantity }
+        console.log(output)
+
+        if (isNaN(quantity) === true) {
+            window.alert("please enter value")
+        }
+
+        if(!quantity || quantity < 0 || quantity === 0) {
+            window.alert("please enter a valid value")
+        }
+
+      else{
+        const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(output + quantity)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('success', data)
+                window.location.reload();
+            })
+      }
+
+    }
+
+
+
     return (
         <div >
             <div className='product-info '>
@@ -64,12 +123,16 @@ const InventoryItem = () => {
                                         Quantity :  {laptop.quantity}
                                     </div>
                                     <div className="card-header">
-                                        <Button onClick={handleDelivered} variant='outline-primary'>Delivered</Button>
-                                        <Button variant='outline-primary px-3 mx-3'>Restock</Button>
+                                        {/* <Button onClick={handleDelivered} variant='outline-primary'>Delivered</Button> */}
+                                        <form onSubmit={handleDelivered}>
+                                            <input type="number" name="quantity" id="" />
+                                            <input type="submit" value="Submit" />
+                                        </form>
+
+                                        <Button onClick={handleRestock} variant='outline-primary px-3 mx-3'>Restock</Button>
                                     </div>
                                 </div>
-                                {/* <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> */}
+                                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
                             </div>
                         </div>
                     </div>

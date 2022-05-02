@@ -16,7 +16,7 @@ const Inventory = ({ product }) => {
         <div className='container w-100 h-100 my-2'>
             <div className='container border-0 shadow py-2 px-3'>
                 <div className='product-image'>
-                    <img className='rounded mx-auto d-block img-fluid' src={product?.picture} alt="" />
+                    <img className='rounded mx-auto d-block img-fluid' src={product?.img} alt="" />
                 </div>
                 <div className='pb-3'>
                     <span className='fw-bolder'> {product?.title}</span> <br />

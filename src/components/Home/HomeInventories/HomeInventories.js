@@ -25,13 +25,13 @@ const HomeInventories = () => {
                         className="container col d-flex justify-content-center">
                             <div className="card-container card-product-grid card-lg w-100"> 
                             <div className="img-wrap" data-abc={true}> 
-                            <img className='img-fluid w-100 h-100 image-rounded' src={product.picture} alt=""/>
+                            <img className='img-fluid w-100 h-100 image-rounded' src={product.img} alt=""/>
                             </div>
                                 <figcaption className="info-wrap">
                                     <div className="row">
                                         <div className="col-md-12 col-xs-12">
                                             <h4 className="title">{product.name}</h4>
-                                            <h6 className="text-left fw-lighter ps-0 pb-0">Supplier: {product.supplierName}</h6> </div>
+                                            <h6 className="text-left fw-lighter ps-0 pb-0">Supplier: {product.Supplier}</h6> </div>
 
                                     </div>
                                 </figcaption>

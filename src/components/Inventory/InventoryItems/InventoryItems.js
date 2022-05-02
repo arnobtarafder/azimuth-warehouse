@@ -8,7 +8,7 @@
 
 //     return (
 //         <div id='products' className='products container'>
-//             {/* <h1 class="title">Awesome Heading</h1> */}
+//             {/* <h1 className="title">Awesome Heading</h1> */}
 
 //             <div className="row">
 //                 {/* <h1 className='text-primary text-center mt-5'>Our products: {products.length}</h1> */}

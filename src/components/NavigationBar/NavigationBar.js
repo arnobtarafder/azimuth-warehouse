@@ -29,7 +29,7 @@ const NavigationBar = () => {
           <Nav className="me-auto">
             <Nav.Link className='text-dark' as={Link} to="/home">Home</Nav.Link>
             <Nav.Link className='text-dark' as={Link} to="/blogs">Blogs</Nav.Link>
-            <Nav.Link className='text-dark' as={Link} to="/inventories">Inventories</Nav.Link>
+            <Nav.Link className='text-dark' as={Link} to="/inventories">Inventory</Nav.Link>
 
             <NavDropdown title="Services" id="collapsible-nav-dropdown">
               <NavDropdown.Item as={Link} to="/course/1">Bangla</NavDropdown.Item>
@@ -47,11 +47,11 @@ const NavigationBar = () => {
               <>
               
            <Nav>
-           <Nav.Link  className='text-dark' as={Link} to="/inventory">Inventory Items</Nav.Link> 
+              <Nav.Link className='text-dark' as={Link} to="/addItems">Add Inventory</Nav.Link>
               
-              <Nav.Link className='text-dark' as={Link} to="/manageInventory">Manage Inventories</Nav.Link>
+              <Nav.Link className='text-dark' as={Link} to="/manageInventory">Manage Inventory</Nav.Link>
 
-              <Nav.Link className='text-dark' as={Link} to="/addItems">Add Inventories</Nav.Link>
+           <Nav.Link  className='text-dark' as={Link} to="/inventory">My Inventory</Nav.Link> 
            </Nav>
 
               
