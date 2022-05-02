@@ -110,7 +110,7 @@
   border-radius: 0 0 30% 100%;
 }
 
-.shadow {
+.NotFound-Shadow {
   position: absolute;
   width: 30%;
   height: 7%;
@@ -144,14 +144,14 @@
 }
 
 /*text styling*/
-h1 {
+.NotFound-Header {
   font-family: big;
   color: white;
   text-align: center;
   font-size: 9em;
   margin: 0;
 }
-h3 {
+.NotFound-Text {
   font-family: body;
   font-size: 2em;
   text-transform: uppercase;
@@ -160,7 +160,7 @@ h3 {
   margin-top: -20px;
   font-weight: 900;
 }
-p {
+.NotFound-Paragraph {
   text-align: center;
   font-family: body;
   color: dark;
@@ -170,7 +170,7 @@ p {
 }
 
 
-.buttons {
+.NotFound-Buttons {
   display: flex;
   align-items: center;
   justify-content: center;

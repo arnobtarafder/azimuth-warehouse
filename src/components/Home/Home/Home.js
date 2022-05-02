@@ -1,7 +1,7 @@
 import React from 'react';
 import SocialLogin from '../../Authentication/SocialLogin/SocialLogin.js';
 import Banner from '../Banner/Banner.js';
-import InventoryItems from '../InventoryItems/InventoryItems.js';
+import HomeInventories from '../HomeInventories/HomeInventories.js';
 
 const Home = () => {
     return (
@@ -12,7 +12,7 @@ const Home = () => {
             <SocialLogin />
             </div>
 
-            <InventoryItems />
+            <HomeInventories />
         </div>
     );
 };

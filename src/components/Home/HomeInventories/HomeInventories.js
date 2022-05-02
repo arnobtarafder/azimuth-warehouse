@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import useInventoryItems from '../../../hooks/useInventoryItems';
-import './InventoryItems.css';
+import useInventoryProducts from '../../../hooks/useInventoryProducts';
+import './HomeInventories.css'
 
 
-const InventoryItems = () => {
-    const [products, setProducts] = useInventoryItems();
+const HomeInventories = () => {
+    const [products, setProducts] = useInventoryProducts();
     const navigate = useNavigate();
 
     const navigateToProductDetail = id => {
@@ -18,10 +18,12 @@ const InventoryItems = () => {
             {/* <h1 className="title">Awesome Heading</h1> */}
 
             <div className="row">
-                <div className="products-container">
+                <div className="products-container w-100">
                     {
-                        products.slice(0, 6).map(product => <div className="container d-flex justify-content-center">
-                            <figure className="card-container card-product-grid card-lg"> 
+                        products.slice(0, 6).map(product => <div
+                        key={product._id}
+                        className="container col d-flex justify-content-center">
+                            <div className="card-container card-product-grid card-lg w-100"> 
                             <div className="img-wrap" data-abc={true}> 
                             <img className='img-fluid w-100 h-100 image-rounded' src={product.picture} alt=""/>
                             </div>
@@ -47,7 +49,7 @@ const InventoryItems = () => {
                                 </div>
                                 <div className="bottom-wrap text-center"> <button onClick={() => navigateToProductDetail(product?._id)} className="btn btn-primary" data-abc={true}> Manage </button>
                                 </div>
-                            </figure>
+                            </div>
                         </div>)
                     }
                 </div>
@@ -56,4 +58,4 @@ const InventoryItems = () => {
     );
 };
 
-export default InventoryItems;
+export default HomeInventories;

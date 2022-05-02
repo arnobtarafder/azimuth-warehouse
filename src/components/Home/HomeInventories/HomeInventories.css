@@ -1,11 +1,15 @@
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
 
 .card-product-list,
 .card-product-grid {
-    margin-bottom: 0
+    margin-bottom: 0;
 }
 
 .card-container {
-    max-width: 300px;
+    min-width: 300px;
     position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -45,6 +49,7 @@
 
 .image-rounded {
     border-radius: 21px;
+    max-width: 290px;
 }
 
 .card-product-grid .img-wrap {
@@ -80,4 +85,20 @@
 .bottom-wrap-payment {
     padding: 0px;
     border-top: 1px solid #e4e4e4
+}
+
+@media only screen and (min-width: 0px) and (max-width: 566px) {
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+}
+
+@media only screen and (min-width: 567px) and (max-width: 970px) {
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
 }

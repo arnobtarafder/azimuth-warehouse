@@ -16,8 +16,8 @@ const NotFound = () => {
     <div className='NotFound-Body container-fluid h-100 w-100 py-5'>
       <div id="background"></div>
       <div className="top">
-        <h1>404</h1>
-        <h3>page not found</h3>
+        <h1 className="NotFound-Header">404</h1>
+        <h3 className='NotFound-Text'>page not found</h3>
       </div>
       <div className="NotFound-Container">
         <div className="ghost-copy">
@@ -33,12 +33,12 @@ const NotFound = () => {
             <div className="mouth"></div>
           </div>
         </div>
-        <div className="shadow"></div>
+        <div className="NotFound-Shadow"></div>
       </div>
       <div className="bottom">
-        <p>Boo, looks like a ghost stole this page!</p>
+        <p className='NotFound-Paragraph'>Boo, looks like a ghost stole this page!</p>
 
-        <div className="buttons">
+        <div className="NotFound-Buttons">
           <button className="NotFound-Button" onClick={() => navigate(-1)}>Back</button>
         
           <button onClick={() => navigate("/home")} className='NotFound-Button'>home <i className="far fa-hand-point-right"></i></button>

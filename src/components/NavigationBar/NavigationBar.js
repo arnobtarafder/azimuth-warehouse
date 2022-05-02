@@ -29,6 +29,7 @@ const NavigationBar = () => {
           <Nav className="me-auto">
             <Nav.Link className='text-dark' as={Link} to="/home">Home</Nav.Link>
             <Nav.Link className='text-dark' as={Link} to="/blogs">Blogs</Nav.Link>
+            <Nav.Link className='text-dark' as={Link} to="/inventories">Inventories</Nav.Link>
 
             <NavDropdown title="Services" id="collapsible-nav-dropdown">
               <NavDropdown.Item as={Link} to="/course/1">Bangla</NavDropdown.Item>

@@ -9,7 +9,7 @@ const Footer = () => {
 
     return (
 
-        <footer className="new_footer_area bg_color mt-5 bottom-0 w-100">
+        <footer className="fixed-bottom new_footer_area d-flex flex-column min-vh-100 mt-auto">
             <div className="new_footer_top">
                 <div className="container">
                     <div className="footer_bg">

@@ -1,38 +1,82 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
+import { useNavigate, useParams } from 'react-router-dom';
+import useInventoryProducts from '../../../hooks/useInventoryProducts';
+// import useProducts from '../../Hooks/useProducts';
+import './InventoryItem.css'
 
-const InventoryItem = ({product}) => {
-    const { _id, name, supplierName, picture, description, price } = product;
-    const navigate = useNavigate();
 
-    const navigateToProductDetail = id => {
-        navigate(`/inventory/${id}`)
+
+const InventoryItem = () => {
+    const { id } = useParams()
+    const navigate = useNavigate()
+    const [item, setItem] = useInventoryProducts()
+    const [laptop, setLaptop] = useState({})
+    console.log(laptop)
+    useEffect(() => {
+        const url = `http://localhost:5000/products/${id}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setLaptop(data))
+    }, [id])
+    let itemQuantity = parseFloat(laptop?.quantity)
+    let newQuantity = itemQuantity - 1
+    const handleDelivered = () => {
+        const result = newQuantity--
+
     }
-
-
+    const handleManageInventories = () => {
+        navigate('/manageInventories')
+    }
     return (
-        <div className='service position-relative my-5 border'>
-        <img className='w-100' src={picture} alt="" />
-        <div className='p-3'>
-            <h2>{name}</h2>
-            <h5>{supplierName}</h5>
-            <p>Price: {price}</p>
-            <div className='pb-5 fs-5'><small>{
-                description.length < 378
-                    ? description
-                    :
-                    <div>
-                        {description.slice(0, 278)}
-                        <span className=''>
-                            <button onClick={() => navigateToProductDetail(_id)} className='btn btn-link text-decoration-none ps-0'>
-                                ...read more
-                            </button>
-                        </span>
+        <div >
+            <div className='product-info '>
+                <div className="card text-center mb-3" >
+                    <div className="row g-0">
+                        <div className="col-md-6 col-sm-12">
+                            <img src={laptop.img} className="img-fluid rounded-start  border-bottom" alt="..." />
+                            <h3 className="card-title">{laptop.title}</h3>
+                        </div>
+                        <div className="col-md-6 col-sm-12">
+                            <div className="card-body mt-3">
+
+                                <div className="card w-75 mx-auto text-start " style={{ "width": "18rem" }}>
+                                    <div className="card-header">
+                                        Name :  {laptop.title}
+                                    </div>
+                                    <div className="card-header">
+                                        Supplied By :  {laptop.Supplier}
+                                    </div>
+                                    <div className="card-header">
+                                        Description :
+                                    </div>
+                                    <ul className="list-group list-group-flush">
+                                        <li className="list-group-item"> <small>Model: {laptop.description?.model} </small>  </li>
+                                        <li className="list-group-item"> <small>Processor: {laptop.description?.processor}  </small> </li>
+                                        <li className="list-group-item"> <small> Memory: {laptop.description?.memory}  </small></li>
+                                        <li className="list-group-item"> <small> Storage: {laptop.description?.storage}  </small></li>
+                                        <li className="list-group-item"> <small>Display: {laptop.description?.display} </small>  </li>
+                                    </ul>
+                                    <div className="card-header">
+                                        Price : $ {laptop.price}
+                                    </div>
+                                    <div className="card-header">
+                                        Quantity :  {laptop.quantity}
+                                    </div>
+                                    <div className="card-header">
+                                        <Button onClick={handleDelivered} variant='outline-primary'>Delivered</Button>
+                                        <Button variant='outline-primary px-3 mx-3'>Restock</Button>
+                                    </div>
+                                </div>
+                                {/* <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> */}
+                            </div>
+                        </div>
                     </div>
-            }</small></div>
-            <button onClick={() => navigateToProductDetail(_id)} className='btn btn-primary position-absolute top-auto bottom-0'>Book Now</button>
-        </div>
-    </div>
+                </div>
+            </div>
+            <Button className='d-flex mx-auto' onClick={handleManageInventories} variant='outline-primary'> Manage Inventories</Button>
+        </div >
     );
 };
 
