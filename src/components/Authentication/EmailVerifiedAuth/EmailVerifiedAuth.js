@@ -2,7 +2,7 @@ import React from "react";
 import { useSendEmailVerification } from "react-firebase-hooks/auth";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';import { auth } from "../../../Firebase/Firebase.init";
-import './EmailVerifiedAuth.css'
+import './EmailVerifiedAuth.css';
 
 const EmailVerifiedAuth = () => {
   const [sendEmailVerification] =

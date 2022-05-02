@@ -9,18 +9,19 @@ import auth from "../../firebase.init";
 
 const NavigationBar = () => {
 
-    const [user] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
-    const handleSignOut = () => {
-      signOut(auth);
-    }
+  const handleSignOut = () => {
+    signOut(auth);
+  }
+
 
 
   return (
     <Navbar sticky="top" expand="lg" bg="light">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          {/* <img height={30} src="https://cdn-icons-png.flaticon.com/128/987/987748.png?ga=GA1.1.208812877.1649674070" type="image/x-icon" alt="" />  */}
+          <img height={30} src="https://cdn-icons-png.flaticon.com/128/7380/7380986.png" type="image/x-icon" alt="" />
           <span className='ps-3 pe-4 text-secondary'>Azimuth Warehouse</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -31,12 +32,6 @@ const NavigationBar = () => {
             <Nav.Link className='text-dark' as={Link} to="/blogs">Blogs</Nav.Link>
             <Nav.Link className='text-dark' as={Link} to="/inventories">Inventory</Nav.Link>
 
-            <NavDropdown title="Services" id="collapsible-nav-dropdown">
-              <NavDropdown.Item as={Link} to="/course/1">Bangla</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/course/2">Math</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/course/3">English</NavDropdown.Item>
-            <NavDropdown.Divider />
-            </NavDropdown>
           </Nav>
 
           <Nav.Item>
@@ -45,16 +40,17 @@ const NavigationBar = () => {
               user &&
 
               <>
-              
-           <Nav>
-              <Nav.Link className='text-dark' as={Link} to="/addItems">Add Inventory</Nav.Link>
-              
-              <Nav.Link className='text-dark' as={Link} to="/manageInventory">Manage Inventory</Nav.Link>
 
-           <Nav.Link  className='text-dark' as={Link} to="/inventory">My Inventory</Nav.Link> 
-           </Nav>
 
-              
+                <NavDropdown title="Inventory Management" id="collapsible-nav-dropdown">
+
+                  <NavDropdown.Item as={Link} to="/inventory">My Inventory</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/manageInventory">Manage Inventory</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/addItems">Add Items</NavDropdown.Item>
+
+                </NavDropdown>
+
+
               </>
 
             }
@@ -63,26 +59,10 @@ const NavigationBar = () => {
           <Nav>
 
 
-
             <Nav.Item>
+
+
               {
-                user ?
-
-                  <Link to='/checkout' className='nav-link'>
-                    {user?.displayName ? user.displayName : "mr.user"}
-                    <img className='ml-3 ms-2 rounded-circle' src={user?.photoURL ? user?.photoURL : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLTZa9zbpSzXR8zIpsVu_ttX7xukvQPOjXew&usqp=CAU"} width="35px" alt="" />
-                  </Link>
-
-                  :
-
-                  <Link to='/signIn' className='nav-link pt-3 pe-4 fw-bolder'>Sign in</Link>
-              }
-            </Nav.Item>
-
-            <Nav.Item>
-
-              
-          {
                 user ?
                   <Link to='/' className='nav-link'>
                     <button onClick={handleSignOut}
@@ -100,8 +80,29 @@ const NavigationBar = () => {
                     </button>
                   </Link>
               }
-     
+
             </Nav.Item>
+
+
+            <Nav.Item>
+
+              {
+                user ?
+
+                  <Link to='/userProfile' className='nav-link'>
+                    <img className='ml-3 ms-3 rounded-3 me-1' src={
+                      user ? user?.photoURL : "https://cdn-icons-png.flaticon.com/128/3237/3237472.png"} width="35px" alt="" />
+
+                    {/* {user?.displayName ? user.displayName.split(" ")[0] : "mr.user"} */}
+                  </Link>
+
+                  :
+
+                  <Link to='/signIn' className='nav-link pt-3 pe-4 fw-bolder'>Sign in</Link>
+              }
+            </Nav.Item>
+
+
           </Nav>
         </Navbar.Collapse>
       </Container>

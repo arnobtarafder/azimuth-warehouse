@@ -41,7 +41,7 @@ const ManageInventory = () => {
                     </thead>
                     {
                         products.map(product => <>
-                            <tbody>
+                            <tbody key={product._id}>
                                 <tr>
                                     {/* <td>{product._id}</td> */}
                                     <td>{product?.title}</td>
