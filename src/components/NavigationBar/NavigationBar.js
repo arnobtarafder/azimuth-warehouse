@@ -23,7 +23,7 @@ const NavigationBar = () => {
         <Navbar.Brand href="/home">
           <img
             alt=""
-            src="https://cdn-icons-png.flaticon.com/128/7380/7380986.png"
+            src="https://cdn-icons-png.flaticon.com/128/7142/7142160.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
