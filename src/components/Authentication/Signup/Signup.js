@@ -5,11 +5,13 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import auth from "../../../firebase.init";
 import Loading from "../../Loading/Loading";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import './SignUp.css'
+
 
 const SignUp = () => {
   const [notMatchError, setNotMatchError] = useState("");
@@ -129,6 +131,8 @@ const SignUp = () => {
           </form>
         </div>
       </div>
+
+      <ToastContainer />
     </div>
   );
 };

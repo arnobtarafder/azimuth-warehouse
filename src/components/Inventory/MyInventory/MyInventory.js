@@ -8,8 +8,7 @@ import Loading from "../../Loading/Loading";
 import HomeInventories from "../../Home/HomeInventories/HomeInventories";
 
 
-
-const MyInventory = () => {
+const MyItems = () => {
   const [user, loading, error] = useAuthState(auth);
   const [isReload, setIsReload] = useState(false);
   const [addProduct, setAddProduct] = useState([]);
@@ -29,19 +28,21 @@ const MyInventory = () => {
         setAddProduct(data);
       } catch (error) {
         console.log(error.message);
-        // if (error.response.status === 401 || error.response.status === 403) {
-        //   signOut(auth);
-        //   navigate("/login");
-        // }
+        if (error.response.status === 401 || error.response.status === 403) {
+          signOut(auth);
+          navigate("/signIn");
+        }
       }
     };
     getOrders();
   }, [user, isReload]);
-
   if (addProduct.length === 0) {
-    return window.alert("There are no products at your 'My Inventory' page");
+    return (
+      <div>
+        <Loading></Loading>
+      </div>
+    );
   }
-
   const handleDelete = (id) => {
     const confirm = window.confirm("Are you sure you want to delete");
     if (!confirm) {
@@ -56,21 +57,15 @@ const MyInventory = () => {
         setIsReload(!isReload);
       });
   };
-
-
-
-
   return (
-    <div className="bg-white">
+    <div className="bg-white w-100">
       <h2 className="text-center text-3xl italic text-gray-700 font-bold mt-4">
         Total added product {addProduct.length}
       </h2>
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Products</h2>
 
-        <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
-         
-         
+        <div className="">
           {addProduct.map((product) => (
             <HomeInventories key={product._id} product={product}>
               {" "}
@@ -101,4 +96,4 @@ const MyInventory = () => {
   );
 };
 
-export default MyInventory;
+export default MyItems;
