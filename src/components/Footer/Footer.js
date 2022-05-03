@@ -1,155 +1,98 @@
 import React from "react";
-import {
-  AiFillLinkedin,
-  AiOutlineDribbble,
-  AiOutlineTwitter,
-} from "react-icons/ai";
-import { BsFacebook } from "react-icons/bs";
-import { FaGithub } from "react-icons/fa";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
+import './Footer.css';
+
+
 const Footer = () => {
+    const [user] = useAuthState(auth);
   const today = new Date();
+  const year = today.getFullYear();
+  
   return (
-    <footer className="bg-gray-100 mt-12">
-      <div className="container mx-auto grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
-        <div>
-          <h2 className="mb-6 text-sm font-semibold text-gray-800 uppercase">
-            Company
-          </h2>
-          <ul className="text-gray-800">
-            <li className="mb-4">
-              <a href="#" className=" hover:underline">
-                About
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">
-                Careers
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">
-                Brand Center
-              </a>
-            </li>
-            <li className="mb-4">
-              <Link to="/blog" className="hover:underline">
-                Blog
-              </Link>
-            </li>
-          </ul>
+    <footer class="footer-section">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget company-intro-widget">
+              <a href="index.html" class="site-logo"><img src="https://cdn-icons-png.flaticon.com/128/7142/7142160.png" alt="logo" /></a>
+              <h1 className="text-white fs-1">Azimuth Warehouse</h1>
+              <ul class="company-footer-contact-list">
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget course-links-widget text-start">
+              <h5 class="widget-title text-decoration-underline">Popular Furnitures</h5>
+              <ul class="courses-link-list">
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Bedroom</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Dining Room</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Drawing Room</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Kitchen</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Bathroom Fitings</a></li>
+                <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Store Room</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget latest-news-widget">
+              <h5 class="widget-title text-decoration-underline">lastest news</h5>
+              <ul class="small-post-list">
+                <li>
+                  <div class="small-post-item">
+                    <a href="#" class="post-date">July 18, {year}</a>
+                    <h6 class="small-post-title"><a href="#">We are opening our new branch at Gulshan.</a></h6>
+                  </div>
+                </li>
+                <li>
+                  <div class="small-post-item">
+                    <a href="#" class="post-date">August 11, {year}</a>
+                    <h6 class="small-post-title"><a href="#">We are going to open 100+ outlets in Dhaka</a></h6>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="widget newsletter-widget">
+              <h5 class="widget-title text-decoration-underline">Newsletter</h5>
+              <div class="footer-newsletter">
+                <p>Sign Up to Our Newsletter to Get Latest Updates & Services</p>
+                <form class="news-letter-form">
+                  <input type="email" name="news-email" id="news-email" value={user?.email} readOnly/>
+                  <textarea placeholder="What You Want To Email Us!" className="form-control" cols="30" rows="5"></textarea>
+
+                  <input type="submit" value="Send" />
+                </form>
+              </div>
+            </div>
+          </div>=
         </div>
-        <div>
-          <h2 className="mb-6 text-sm font-semibold text-gray-800 uppercase">
-            Help center
-          </h2>
-          <ul className="text-gray-800">
-            <li className="mb-4">
-              <a href="#" className="hover:underline">
-                Discord Server
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">
-                Twitter
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">
-                Facebook
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">
-                Contact Us
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h2 className="mb-6 text-sm font-semibold text-gray-800 uppercase">
-            Legal
-          </h2>
-          <ul className="text-gray-800">
-            <li className="mb-4">
-              <a href="#" className="hover:underline">
-                Privacy Policy
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">
-                Licensing
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">
-                Terms &amp; Conditions
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h2 className="mb-6 text-sm font-semibold text-gray-800 uppercase">
-            PRODUCT
-          </h2>
-          <ul className="text-gray-800">
-            <li className="mb-4">
-              <a href="#" className="hover:underline">
-                Our Products
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">
-                Great Deals
-              </a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">
-                Analytics
-              </a>
-            </li>
-            <li className="mb-4">
-              <Link to="/blog" className="hover:underline">
-                Documentation
-              </Link>
-            </li>
-          </ul>
+      </div> 
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-sm-left text-center">
+              <span class="copy-right-text">© {year} <a href="https://github.com/arnobtarafder">Arnob Tarafder</a> All Rights Reserved.</span>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <ul class="terms-privacy d-flex justify-content-sm-end justify-content-center">
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+            </div>
         </div>
       </div>
-      <div className="py-6 px-4 bg-gray-100 md:flex md:items-center md:justify-between">
-        <span className="text-sm text-gray-800 sm:text-center">
-          © {today.getFullYear()} <Link to="/">Furniture warehouse</Link>. All
-          Rights Reserved.
-        </span>
-        <div className="flex mt-4 space-x-6 sm:justify-center md:mt-0">
-          <a href="#" className="text-gray-800 hover:text-orange-500">
-            <AiFillLinkedin />
-          </a>
-          <a href="#" className="text-gray-800 hover:text-orange-500">
-            <AiOutlineDribbble />
-          </a>
-          <a href="#" className="text-gray-800 hover:text-orange-500">
-            <AiOutlineTwitter />
-          </a>
-          <a href="#" className="text-gray-800 hover:text-orange-500">
-            <BsFacebook />
-          </a>
-          <a href="#" className="text-gray-800 hover:text-orange-500">
-            <FaGithub />
-          </a>
-        </div>
-      </div>
-    </footer>
+    </div>=
+  </footer>
   );
 };
 
 export default Footer;
 
-        const today = new Date();
-        const year = today.getFullYear();
-        <footer className="new_footer_area d-flex flex-column mt-auto">
-            
-            <h5 className='text-center pt-3 fs-6 bg-dark pb-2 mb-0'>&copy; Copyright @ {year} Azimuth-Warehouse, Proudly Created By
-                <span><a className='text-decoration-none' href="https://github.com/arnobtarafder"> Arnob Tarafder</a></span>
-            </h5>
-        </footer>
+
+
+
