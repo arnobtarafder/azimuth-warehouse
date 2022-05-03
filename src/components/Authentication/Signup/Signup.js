@@ -115,7 +115,7 @@ const SignUp = () => {
                 label="I agree to the terms and conditions"
               />
             </Form.Group>
-            <button disabled={!agree} className="login-btn" type="submit">
+            <button className={!agree ? "" : "login-btn"} type="submit">
               Sign up
             </button>
             <p className="pb-5 mb-5">

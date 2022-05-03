@@ -13,14 +13,14 @@ const Inventory = ({ product }) => {
     }
 
     return (
-        <div className='container w-100 h-100 my-2'>
-            <div className='container border-0 shadow py-2 px-3'>
+        <div className='container w-100 h-100 my'>
+            <div className='container card-container border-0 shadow py-2 px-3'>
                 <div className='product-image'>
-                    <img className='rounded mx-auto d-block img-fluid' src={product?.img} alt="" />
+                    <img className='rounded mx-auto d-block img-fluid' src={product?.image} alt="" />
                 </div>
                 <div className='pb-3'>
-                    <span className='fw-bolder'> {product?.title}</span> <br />
-                    <span>By  <span className='fst-italic'>{product?.Supplier}</span></span>
+                    <span className='fw-bolder'> {product?.product_name}</span> <br />
+                    <span>By  <span className='fst-italic'>{product?.supplyar_name}</span></span>
                 </div>
                 <div className='d-flex justify-content-between align-items-center mb-3'>
                     <div>

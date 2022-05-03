@@ -53,7 +53,7 @@ const NavigationBar = () => {
 
                   <NavDropdown.Item as={Link} to="/MyInventory">My Inventory</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/manageInventory">Manage Inventory</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/addItems">Add Items</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/addItem">Add Items</NavDropdown.Item>
 
                 </NavDropdown>
 
@@ -73,7 +73,7 @@ const NavigationBar = () => {
                 user ?
                   <Link to='/' className='nav-link'>
                     <button onClick={handleSignOut}
-                      className='btn btn-danger btn-rounded rounded-pill'
+                      className='btn btn-outline-secondary px-2 btn-rounded rounded-3'
                     >
                       Sign out
                     </button>
@@ -81,7 +81,7 @@ const NavigationBar = () => {
                   :
                   <Link to='/signUp' className='nav-link'>
                     <button
-                      className='btn btn-danger'
+                      className='btn btn-outline-secondary px-2 rounded-3'
                     >
                       Sign up
                     </button>

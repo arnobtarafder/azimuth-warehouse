@@ -79,7 +79,7 @@ const SignIn = () => {
               Forgot Password ?{" "}
               
               <button 
-			  	className="text-primary text-decoration-none pe-auto bg-white border-0 ps-1 fw-lighter fs-5"
+			  	className="text-primary text-decoration-none pe-auto bg-white border-0 ps-1 fw-lighter fs-6"
 			   	onClick={resetPassword}
 			   >Reset</button>
             </p>

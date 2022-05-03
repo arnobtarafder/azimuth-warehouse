@@ -5,7 +5,7 @@ import SignUp from './components/Authentication/SignUp/SignUp';
 import Blogs from './components/Blogs/Blogs';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home/Home';
-import AddItems from './components/Inventory/AddItems/AddItems';
+import AddItem from './components/Inventory/AddItem/AddItem';
 import Inventories from './components/Inventory/Inventories/Inventories';
 import InventoryItem from './components/Inventory/InventoryItem/InventoryItem';
 import ManageInventory from './components/Inventory/ManageInventory/ManageInventory';
@@ -28,7 +28,7 @@ function App() {
         <Route path='/blogs' element={<Blogs />}></Route>
         <Route path='/inventories' element={<Inventories />}></Route>
         <Route path='/inventory/:id' element={<InventoryItem />}></Route>
-        <Route path='/addItems' element={<AddItems />}></Route>
+        <Route path='/addItem' element={<AddItem />}></Route>
         <Route path='/manageInventory' element={<ManageInventory />}></Route>
         <Route path='/MyInventory' element={<MyInventory />}></Route>
         <Route path='*' element={<NotFound />}></Route>

@@ -1,144 +1,168 @@
-import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
-import { useNavigate, useParams } from 'react-router-dom';
-import useProducts from '../../../hooks/useProducts';
-import './InventoryItem.css'
+import React, { useEffect, useState } from "react";
+import { FormControl, InputGroup } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import Loading from "../../Loading/Loading";
 
 const InventoryItem = () => {
-    const { id } = useParams()
-    const navigate = useNavigate()
-    const [furniture, setFurniture] = useState({})
-    const [products] = useProducts();
-
+    const { id } = useParams();
+    const [product, setProduct] = useState({});
+    const [isReload, setIsReload] = useState(false);
     useEffect(() => {
-        const url = `https://enigmatic-eyrie-33917.herokuapp.com/products/${id}`
+        const url = `https://enigmatic-eyrie-33917.herokuapp.com/product/${id}`;
         fetch(url)
-            .then(res => res.json())
-            .then(data => setFurniture(data))
-    }, [id, furniture?.quantity])
-    
-   
-    let itemQuantity = parseFloat(furniture?.quantity)
-    let quantityInEveryClick = itemQuantity - 1;
-
-    const handleDelivered = (id) => {
-        const result = quantityInEveryClick--
-        const quantity = result.toString()
-        const output = { quantity }
-        console.log(output)
-        const url = `https://enigmatic-eyrie-33917.herokuapp.com/products/${id}`
-        fetch(url, {
-            method: "PUT",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(output)
-        })
-            .then(res => res.json())
-            .then(data => {
-                let updatedProduct = products.find(product => product.quantity === furniture.quantity)
-                let newQuantity = result.toString()
-                const newObject = { ...updatedProduct, quantity: newQuantity }
-                setFurniture(newObject)
-                // updatedProduct.quantity = result.toString()
-                // setLaptop(updatedProduct)
-                // console.log(updatedProduct)
-                // console.log('success', data)
-            })
-    }
-
-    const handleManageInventories = () => {
-        navigate('/manageInventory')
-    }
+            .then((res) => res.json())
+            .then((data) => setProduct(data));
+    }, [isReload]);
 
 
-
-    const handleRestock = () => {
-        const quantity = window.prompt("Enter the quantity", "")
-        const output = { quantity }
-        console.log(output)
-
-        if (isNaN(quantity) === true) {
-            window.alert("please enter value")
-        }
-
-        if(!quantity || quantity < 0 || quantity === 0) {
-            window.alert("please enter a valid value")
-        }
-
-      else{
-        const url = `https://enigmatic-eyrie-33917.herokuapp.com/products/${id}`
-        fetch(url, {
-            method: "PUT",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(output + quantity)
-        })
-        .then(res => res.json())
-        .then(data => {
-            let updatedProduct = products.find(product => product.quantity === furniture.quantity)
-            // updatedProduct.quantity = quantity
-            // setLaptop(updatedProduct)
-            console.log('success', data)
-            let newQuantity = quantity
-            const newObject = { ...updatedProduct, quantity: newQuantity }
-            setFurniture(newObject)
-            console.log(newObject)
-        })
-      }
-
-    }
-
-
-    return (
-        <div >
-            <div className='product-info '>
-                <div className="card text-center mb-3" >
-                    <div className="row g-0">
-                        <div className="col-md-6 col-sm-12">
-                            <img src={furniture.image} className="img-fluid rounded-start  border-bottom" alt="..." />
-                            <h3 className="card-title">{furniture.title}</h3>
-                        </div>
-                        <div className="col-md-6 col-sm-12">
-                            <div className="card-body mt-3">
-
-                                <div className="card w-75 mx-auto text-start " style={{ "width": "18rem" }}>
-                                    <div className="card-header">
-                                        Name :  {furniture.title}
-                                    </div>
-                                    <div className="card-header">
-                                        Supplied By :  {furniture.Supplier}
-                                    </div>
-                                    <div className="card-header">
-                                        Description :
-                                    </div>
-                                    <ul className="list-group list-group-flush">
-                                        <li className="list-group-item"> <small>Model: {furniture.description?.model} </small>  </li>
-                                        <li className="list-group-item"> <small>Processor: {furniture.description?.processor}  </small> </li>
-                                        <li className="list-group-item"> <small> Memory: {furniture.description?.memory}  </small></li>
-                                        <li className="list-group-item"> <small> Storage: {furniture.description?.storage}  </small></li>
-                                        <li className="list-group-item"> <small>Display: {furniture.description?.display} </small>  </li>
-                                    </ul>
-                                    <div className="card-header">
-                                        Price : $ {furniture?.price}
-                                    </div>
-                                    <div className="card-header">
-                                        Quantity :  {furniture?.quantity}
-                                    </div>
-                                    <div className="card-header">
-                                        <Button onClick={() => handleDelivered(furniture._id)} variant='outline-primary'>Delivered</Button>
-                                        <Button onClick={handleRestock} variant='outline-primary px-3 mx-3'>Restock</Button>
-                                    </div>
-                                </div>
-                                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    if (product == {}) {
+        return (
+            <div>
+                <Loading></Loading>
             </div>
-            <Button className='d-flex mx-auto' onClick={handleManageInventories} variant='outline-primary'> Manage Inventories</Button>
-        </div >
+        );
+    }
+
+    const delivered = (e) => {
+        const product_name = product.product_name;
+        const image = product.image;
+        const description = product.description;
+        const price = product.price;
+        const quantity = parseInt(product.quantity) - 1;
+        const email = product.email;
+        const supplyar_name = product.supplyar_name;
+        const confirm = window.confirm("Are you sure! You want to delivered");
+
+
+        const card = {
+            product_name,
+            image,
+            description,
+            price,
+            quantity,
+            supplyar_name,
+            email,
+        };
+
+        if (!confirm) {
+            return;
+        }
+        if (quantity == -1) {
+            return toast.error("Please! Add The Product Quantity");
+        }
+
+        else {
+            fetch(`https://enigmatic-eyrie-33917.herokuapp.com/product/${id}`, {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(card),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    toast.success(`${1} Product Has Successfully Delivered`);
+                    setIsReload(!isReload);
+                });
+        }
+    };
+
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        const product_name = product.product_name;
+        const image = product.image;
+        const description = product.description;
+        const price = product.price;
+        const inputValue = parseInt(e.target.update.value);
+        const quantity = inputValue + parseInt(product.quantity);
+        const email = product.email;
+        const supplyar_name = product.supplyar_name;
+
+        if (!inputValue) {
+            return toast.error("Please Give a Valid Value");
+        }
+        if (inputValue < 0) {
+            return toast.error("Please Update a Positive Value");
+        }
+
+
+        const card = {
+            product_name,
+            image,
+            description,
+            price,
+            quantity,
+            supplyar_name,
+            email,
+        };
+        fetch(`https://enigmatic-eyrie-33917.herokuapp.com/product/${id}`, {
+            method: "PUT",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(card),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                toast.success(`${inputValue} product added successfully`);
+                setIsReload(!isReload);
+            });
+        e.target.reset();
+    };
+    return (
+        <div className="max-w-lg mx-auto mt-4">
+            <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+                <img
+                    src={product?.image}
+                    alt={product?.imageAlt}
+                    className="h-60 w-full object-center object-cover group-hover:opacity-75"
+                />
+            </div>
+
+            <div className="text-start">
+                <h3 className="mt-4 text-sm text-gray-700">{product.product_name}</h3>
+                <p className="mt-1 text-lg font-medium text-gray-500">
+                    {product?.quantity} product{" "}
+                </p>
+                <p className="mt-1 text-lg font-medium text-gray-900">
+                    ${product?.price}
+                </p>
+                <p className="mt-1 text-lg text-gray-600">{product?.description}</p>
+                <p className="mt-1 text-lg font-medium text-gray-900">
+                    Supplier: {product?.supplyar_name}
+                </p>
+            </div>
+            <button
+                onClick={delivered}
+                className=" my-2 cursor-pointer flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
+            >
+                delivered
+            </button>
+            {/* update product quantity */}
+            <form onSubmit={handleUpdate}>
+                <InputGroup className="mb-3">
+                    <FormControl
+                        name="update"
+                        type="number"
+                        placeholder="update product quantity"
+                        aria-label="Recipient's username"
+                        aria-describedby="basic-addon2"
+                    />
+                    <InputGroup.Text
+                        className="cursor-pointer flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 "
+                        id="basic-addon2"
+                    >
+                        <button type="submit">update</button>
+                    </InputGroup.Text>
+                </InputGroup>
+            </form>
+
+            <ToastContainer />
+        </div>
     );
 };
 

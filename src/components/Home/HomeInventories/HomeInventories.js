@@ -31,7 +31,7 @@ const HomeInventories = () => {
                                     <div className="row">
                                         <div className="col-md-12 col-xs-12">
                                             <h4 className="title">{product.name}</h4>
-                                            <h6 className="text-left fw-lighter ps-0 pb-0">Supplier: {product.Supplier}</h6> </div>
+                                            <h6 className="text-left fw-lighter ps-0 pb-0">Supplier: {product.supplyar_name}</h6> </div>
 
                                     </div>
                                 </figcaption>

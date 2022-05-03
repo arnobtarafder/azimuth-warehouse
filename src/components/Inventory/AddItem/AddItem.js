@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import auth from "../../../firebase.init";
 
 
@@ -35,8 +36,8 @@ const AddItem = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast("Added product successfully");
-        console.log(data);
+        toast.success("Added product successfully");
+        // console.log(data);
       });
     e.target.reset();
   };
@@ -52,8 +53,16 @@ const AddItem = () => {
             name="email"
             className="input-lg mx-auto d-block form-control  border rounded w-100 pe-1 py-2 mb-3"
             value={user?.email}
-            // readOnly
+            readOnly
             type="email"
+          />
+          <input
+            required
+            name="supplyar_name"
+            className=" mx-auto d-block form-control border rounded w-100 pe-1 py-2 mb-3"
+            value={user?.displayName}
+            readOnly
+            type="text"
           />
           <input
             required
@@ -95,22 +104,17 @@ const AddItem = () => {
             placeholder="Quantity"
             type="number"
           />
-          <input
-            required
-            name="supplier_name"
-            className=" mx-auto d-block form-control  border rounded w-100 pe-1 py-2 mb-3"
-            placeholder="Supplier name"
-            type="text"
-          />
-          <div className="flex flex-col mt-4 d-block form-control  justify-center ">
+          <div className="flex flex-col mt-4 d-block justify-center ">
             <input
-              className="btn btn-outline-success cursor-pointer flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-3"
+              className="cursor-pointer flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
               type="submit"
               value="Add Product"
             />
           </div>
         </form>
       </div>
+
+      <ToastContainer />
     </div>
   );
 };

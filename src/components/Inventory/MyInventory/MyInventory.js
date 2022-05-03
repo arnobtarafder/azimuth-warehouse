@@ -37,13 +37,11 @@ const MyInventory = () => {
     };
     getOrders();
   }, [user, isReload]);
+
   if (addProduct.length === 0) {
-    return (
-      <div>
-        <Loading></Loading>
-      </div>
-    );
+    return window.alert("There are no products at you 'My Inventory' page");
   }
+
   const handleDelete = (id) => {
     const confirm = window.confirm("Are you sure you want to delete");
     if (!confirm) {

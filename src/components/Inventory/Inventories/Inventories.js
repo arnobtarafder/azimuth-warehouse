@@ -1,6 +1,6 @@
 import React from 'react';
 import useProducts from '../../../hooks/useProducts';
-// import './Inventory.css';
+import './Inventory.css';
 import Inventory from './Inventory';
 
 const Inventories = () => {
@@ -11,8 +11,8 @@ const Inventories = () => {
 
             <div className='inventory-container my-1 w-100 h-100'>
                 {
-                    products.map(pd =>
-                        <Inventory key={pd._id} product={pd}></Inventory>
+                    products.map(product =>
+                        <Inventory key={product._id} product={product}></Inventory>
                     )
                 }
             </div>
