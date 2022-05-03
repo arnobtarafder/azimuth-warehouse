@@ -38,7 +38,7 @@ const Banner = () => {
           <h4 className=" italic font-bold text-xl text-gray-800">
             We offer free shipping on all orders over $750.
           </h4>
-          <button className=" my-4 cursor-pointer flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button onClick={navigate("/inventories")} className=" my-4 cursor-pointer flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Discover now
           </button>
         </div>
