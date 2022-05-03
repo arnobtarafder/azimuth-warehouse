@@ -2,6 +2,8 @@ import React from 'react'
 import { Table } from 'react-bootstrap'
 import Blog from './Blog'
 import './Blogs.module.css'
+import { Helmet } from 'react-helmet-async'
+
 
 
 const Blogs = () => {
@@ -40,6 +42,10 @@ const Blogs = () => {
 
     return (
         <div className="blogs-container bg-img container">
+            <Helmet>
+                <title>Blogs | Azimuth Warehouse</title>
+            </Helmet>
+
             <div className="container">
                 <div className="blogs-info">
                     <h1 className='text-decoration-underline fs-1 text-center my-5'>Frequently Asked Question (FAQ)</h1>

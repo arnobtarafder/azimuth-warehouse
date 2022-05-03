@@ -10,7 +10,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import auth from "../../../firebase.init";
 import Loading from "../../Loading/Loading";
 import SocialLogin from "../SocialLogin/SocialLogin";
-import './SignUp.css'
+import './SignUp.css';
+import { Helmet } from 'react-helmet-async';
+
 
 
 const SignUp = () => {
@@ -62,6 +64,10 @@ const SignUp = () => {
   }
   return (
     <div className="form-body container mx-auto">
+      <Helmet>
+        <title>Sign up | Azimuth Warehouse</title>
+      </Helmet>
+
       <div className="container-main-form" id="container">
 
       <div className="overlay-container">

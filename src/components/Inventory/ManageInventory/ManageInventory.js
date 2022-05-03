@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useProducts from "../../../hooks/useProducts";
-import Loading from "../../Loading/Loading"
+import Loading from "../../Loading/Loading";
+import { Helmet } from 'react-helmet-async';
+
 
 const ManageInventory = () => {
     const [products, setProducts] = useState([]);
@@ -52,6 +54,10 @@ const ManageInventory = () => {
     return (
         <div>
             <div className='container  p-5 table-responsive-sm'>
+                <Helmet>
+                    <title>Manage Inventory | Azimuth Warehouse</title>
+                </Helmet>
+
                 <Table className='table table-bordered  align-middle' responsive="sm">
                     <thead>
                         <tr>

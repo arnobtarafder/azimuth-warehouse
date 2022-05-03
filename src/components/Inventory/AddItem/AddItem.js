@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import auth from "../../../firebase.init";
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -45,6 +46,10 @@ const AddItem = () => {
 
   return (
     <div className="w-100">
+      <Helmet>
+        <title>Add Item | Azimuth Warehouse</title>
+      </Helmet>
+
       <div className="my-4 h-75 bg-white p-5 mx-auto rounded form-container-div shadow">
         <h2 className="text-4xl px-4">Add a new item</h2>
         <form onSubmit={handleAddProduct} className="mt-0 py-5">

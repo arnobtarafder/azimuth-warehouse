@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import Loading from "../../Loading/Loading";
 import HomeInventories from "../../Home/HomeInventories/HomeInventories";
+import { Helmet } from 'react-helmet-async';
+
 
 
 const MyItems = () => {
@@ -39,7 +41,7 @@ const MyItems = () => {
   if (addProduct.length === 0) {
     return (
       <div>
-        <Loading></Loading>
+        <h1 className="fs-1 my-5 py-5">There have no item you had added</h1>
       </div>
     );
   }
@@ -59,6 +61,10 @@ const MyItems = () => {
   };
   return (
     <div className="bg-white w-100">
+      <Helmet>
+        <title>My Inventory | Azimuth Warehouse</title>
+      </Helmet>
+
       <h2 className="text-center text-3xl italic text-gray-700 font-bold mt-4">
         Total added product {addProduct.length}
       </h2>

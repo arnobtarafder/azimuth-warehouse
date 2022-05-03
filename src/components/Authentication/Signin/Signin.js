@@ -8,6 +8,8 @@ import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import auth from "../../../firebase.init";
 import Social from "./Social";
+import { Helmet } from 'react-helmet-async';
+
 
 const SignIn = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -53,6 +55,10 @@ const SignIn = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Sign in | Azimuth Warehouse</title>
+      </Helmet>
+
       <div className="bg-white p-5 max-w-md mx-auto rounded shadow-sm">
         <h2 className="text-4xl px-4 ">Log In</h2>
         <form onSubmit={handleSignIn} className="mt-10 space-y-8">

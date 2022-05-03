@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './NotFound.css';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -14,6 +15,10 @@ const NotFound = () => {
 
   return (
     <div className='NotFound-Body container-fluid h-100 w-100 py-5'>
+      <Helmet>
+        <title>Not Found | Azimuth Warehouse</title>
+      </Helmet>
+
       <div id="background"></div>
       <div className="top">
         <h1 className="NotFound-Header">404</h1>
