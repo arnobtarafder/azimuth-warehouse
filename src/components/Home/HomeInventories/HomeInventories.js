@@ -1,15 +1,28 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useProducts from '../../../hooks/useProducts';
-import './HomeInventories.css'
+import Loading from "../../Loading/Loading"
+import './HomeInventories.css';
 
 
 const HomeInventories = () => {
     const [products, setProducts] = useProducts();
     const navigate = useNavigate();
 
+    if (products.length == 0) {
+        return (
+          <div>
+            <Loading></Loading>
+          </div>
+        );
+      }
+
     const navigateToProductDetail = id => {
         navigate(`/inventory/${id}`)
+    }
+
+    const navigateToManageInventory = id => {
+        navigate(`/manageInventory`)
     }
 
 
@@ -21,12 +34,12 @@ const HomeInventories = () => {
                 <div className="products-container w-100">
                     {
                         products.slice(0, 6).map(product => <div
-                        key={product._id}
-                        className="container col d-flex justify-content-center">
-                            <div className="card-container card-product-grid card-lg w-100"> 
-                            <div className="img-wrap" data-abc={true}> 
-                            <img className='img-fluid w-100 h-100 image-rounded' src={product.image} alt=""/>
-                            </div>
+                            key={product._id}
+                            className="container col d-flex justify-content-center">
+                            <div className="card-container card-product-grid card-lg w-100">
+                                <div className="img-wrap" data-abc={true}>
+                                    <img className='img-fluid w-100 h-100 image-rounded' src={product.image} alt="" />
+                                </div>
                                 <figcaption className="info-wrap">
                                     <div className="row">
                                         <div className="col-md-12 col-xs-12">
@@ -38,7 +51,7 @@ const HomeInventories = () => {
                                 <div className="bottom-wrap-payment">
                                     <figcaption className="info-wrap">
                                         <div className="row">
-                                        <div className="col-md-6 col-xs-6">
+                                            <div className="col-md-6 col-xs-6">
                                                 <div className="text-left"> Quantity: {product.quantity}</div>
                                             </div>
                                             <div className="col-md-6 col-xs-6">
@@ -53,6 +66,9 @@ const HomeInventories = () => {
                         </div>)
                     }
                 </div>
+            </div>
+            <div className='text-center mt-5'>
+                <button className='px-5 py-2 btn btn-outline-success' onClick={navigateToManageInventory} variant="outline-success">Manage Inventory</button>
             </div>
         </div>
     );

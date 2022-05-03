@@ -34,7 +34,7 @@ const Banner = () => {
           <h2 className="font-bold text-6xl text-gray-700 mb-4 mt-2">
             New Furniture Arrivals
           </h2>
-          {/* <h1 class=" ">An animated element</h1> */}
+          {/* <h1 className=" ">An animated element</h1> */}
           <h4 className=" italic font-bold text-xl text-gray-800">
             We offer free shipping on all orders over $750.
           </h4>

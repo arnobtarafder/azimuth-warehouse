@@ -39,7 +39,7 @@ const MyInventory = () => {
   }, [user, isReload]);
 
   if (addProduct.length === 0) {
-    return window.alert("There are no products at you 'My Inventory' page");
+    return window.alert("There are no products at your 'My Inventory' page");
   }
 
   const handleDelete = (id) => {

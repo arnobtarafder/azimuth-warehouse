@@ -16,14 +16,14 @@ const AddItem = () => {
     const price = e.target.price.value;
     const quantity = e.target.quantity.value;
     const email = e.target.email.value;
-    const supplier = e.target.supplier_name.value;
+    // const supplier = e.target.supplier_name.value;
     const card = {
       product_name,
       image,
       description,
       price,
       quantity,
-      supplier,
+      // supplier,
       email,
     };
 
@@ -61,8 +61,8 @@ const AddItem = () => {
             name="supplyar_name"
             className=" mx-auto d-block form-control border rounded w-100 pe-1 py-2 mb-3"
             value={user?.displayName}
-            readOnly
             type="text"
+            readOnly
           />
           <input
             required
