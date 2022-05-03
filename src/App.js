@@ -9,6 +9,7 @@ import AddItems from './components/Inventory/AddItems/AddItems';
 import Inventories from './components/Inventory/Inventories/Inventories';
 import InventoryItem from './components/Inventory/InventoryItem/InventoryItem';
 import ManageInventory from './components/Inventory/ManageInventory/ManageInventory';
+import MyInventory from './components/Inventory/MyInventory/MyInventory';
 
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import NotFound from './components/NotFound/NotFound';
@@ -29,6 +30,7 @@ function App() {
         <Route path='/inventory/:id' element={<InventoryItem />}></Route>
         <Route path='/addItems' element={<AddItems />}></Route>
         <Route path='/manageInventory' element={<ManageInventory />}></Route>
+        <Route path='/MyInventory' element={<MyInventory />}></Route>
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
 

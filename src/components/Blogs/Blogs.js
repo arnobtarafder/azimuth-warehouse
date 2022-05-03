@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import Blog from './Blog'
-import './Blogs.css'
+import './Blogs.module.css'
 
 
 const Blogs = () => {

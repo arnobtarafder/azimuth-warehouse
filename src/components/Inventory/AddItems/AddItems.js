@@ -1,60 +1,118 @@
-import React from 'react';
-import auth from '../../../firebase.init';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import Loading from "../../Loading/Loading"
-import { useForm } from 'react-hook-form';
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { toast } from "react-toastify";
+import auth from "../../../firebase.init";
 
 
-const AddItems = () => {
-    const [user, loading, error] = useAuthState(auth);
-    
-    const { register, handleSubmit } = useForm();
-    
-        if(loading) {
-            return <Loading />
-        }
 
-    const onSubmit = data => {
-        console.log(data)
-        const url = `https://still-bastion-50699.herokuapp.com/laptops`
-        fetch(url, {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(result => {
-                if (result.acknowledged === true) {
-                    toast.success("Product added successfully")
-                }
-            })
+const AddItem = () => {
+  const [user] = useAuthState(auth);
+  const handleAddProduct = (e) => {
+    e.preventDefault();
+    const product_name = e.target.name.value;
+    const image = e.target.image.value;
+    const description = e.target.description.value;
+    const price = e.target.price.value;
+    const quantity = e.target.quantity.value;
+    const email = e.target.email.value;
+    const supplier = e.target.supplier_name.value;
+    const card = {
+      product_name,
+      image,
+      description,
+      price,
+      quantity,
+      supplier,
+      email,
     };
 
+    fetch("https://enigmatic-eyrie-33917.herokuapp.com/product", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(card),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast("Added product successfully");
+        console.log(data);
+      });
+    e.target.reset();
+  };
 
 
-    return (
-        <div>
-            <h2 className='text-center mt-5'>Add a new item</h2>
-            <form className='d-flex flex-column w-50 mx-auto mt-5' onSubmit={handleSubmit(onSubmit)}>
-                <input className='mb-2 py-2 px-3' placeholder='Name of the Product' {...register("title", { required: true, maxLength: 50 })} />
-                <input className='mb-2  py-2 px-3' placeholder='Price' type="text" {...register("price")} />
+  return (
+    <div className="w-100">
+      <div className="my-4 h-75 bg-white p-5 mx-auto rounded form-container-div shadow">
+        <h2 className="text-4xl px-4">Add a new item</h2>
+        <form onSubmit={handleAddProduct} className="mt-0 py-5">
+          <input
+            required
+            name="email"
+            className="input-lg mx-auto d-block form-control  border rounded w-100 pe-1 py-2 mb-3"
+            value={user?.email}
+            // readOnly
+            type="email"
+          />
+          <input
+            required
+            name="name"
+            className=" mx-auto d-block form-control  border rounded w-100 pe-1 py-2 mb-3"
+            placeholder="Product name"
+            type="text"
+          />
 
-                <input className='mb-2  py-2 px-3' placeholder='Quantity' type="text" {...register("quantity")} />
+          <input
+            required
+            className=" mx-auto d-block form-control  border rounded w-100 pe-1 py-2 mb-3"
+            placeholder="Image URL"
+            type="text"
+            name="image"
+          />
 
-                <input className='mb-2  py-2 px-3' placeholder='Photo Url' type="text" {...register("img")} />
+          <div className="my-4">
+            <textarea
+              id="about"
+              name="description"
+              rows="4"
+              className="shadow-sm d-block form-control  mt-2 py-2 pe-1 mb-4 block  mx-auto rounded-3 border"
+              placeholder="Product Description"
+            ></textarea>
+          </div>
 
-                <input className='mb-2  py-2 px-3' placeholder='Your Email' type="email" value={user?.email} {...register("email")} />
-                
-                <input className='mb-2 py-2 fs-5 btn btn-outline-primary' type="submit" />
-            </form>
-
-            <ToastContainer />
-        </div>
-    );
+          <input
+            required
+            name="price"
+            className=" mx-auto d-block form-control  border rounded w-100 pe-1 py-2 mb-3"
+            placeholder="Price"
+            type="number"
+          />
+          <input
+            required
+            name="quantity"
+            className=" mx-auto d-block form-control  border rounded w-100 pe-1 py-2 mb-3"
+            placeholder="Quantity"
+            type="number"
+          />
+          <input
+            required
+            name="supplier_name"
+            className=" mx-auto d-block form-control  border rounded w-100 pe-1 py-2 mb-3"
+            placeholder="Supplier name"
+            type="text"
+          />
+          <div className="flex flex-col mt-4 d-block form-control  justify-center ">
+            <input
+              className="btn btn-outline-success cursor-pointer flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-3"
+              type="submit"
+              value="Add Product"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 };
 
-export default AddItems;
+export default AddItem;

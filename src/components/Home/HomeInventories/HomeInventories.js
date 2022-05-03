@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import useInventoryProducts from '../../../hooks/useInventoryProducts';
+import useProducts from '../../../hooks/useProducts';
 import './HomeInventories.css'
 
 
 const HomeInventories = () => {
-    const [products, setProducts] = useInventoryProducts();
+    const [products, setProducts] = useProducts();
     const navigate = useNavigate();
 
     const navigateToProductDetail = id => {
@@ -25,7 +25,7 @@ const HomeInventories = () => {
                         className="container col d-flex justify-content-center">
                             <div className="card-container card-product-grid card-lg w-100"> 
                             <div className="img-wrap" data-abc={true}> 
-                            <img className='img-fluid w-100 h-100 image-rounded' src={product.img} alt=""/>
+                            <img className='img-fluid w-100 h-100 image-rounded' src={product.image} alt=""/>
                             </div>
                                 <figcaption className="info-wrap">
                                     <div className="row">

@@ -2,7 +2,7 @@ import React from "react";
 import { useSendEmailVerification } from "react-firebase-hooks/auth";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';import { auth } from "../../../Firebase/Firebase.init";
-import './EmailVerifiedAuth.css';
+import './EmailVerifiedAuth.module.css';
 
 const EmailVerifiedAuth = () => {
   const [sendEmailVerification] =
@@ -21,7 +21,8 @@ const EmailVerifiedAuth = () => {
         Send Verification Email Again
       </button>
 
-      <ToastContainer />
+        <ToastContainer closeButton={false} />
+
     </div>
   );
 };

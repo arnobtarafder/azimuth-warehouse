@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
-import useInventoryProducts from '../../../hooks/useInventoryProducts';
+import useProducts from '../../../hooks/useProducts';
 import './InventoryItem.css'
 
 const InventoryItem = () => {
     const { id } = useParams()
     const navigate = useNavigate()
     const [furniture, setFurniture] = useState({})
-    const [products] = useInventoryProducts();
+    const [products] = useProducts();
 
     useEffect(() => {
-        const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
+        const url = `https://enigmatic-eyrie-33917.herokuapp.com/products/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setFurniture(data))
@@ -26,7 +26,7 @@ const InventoryItem = () => {
         const quantity = result.toString()
         const output = { quantity }
         console.log(output)
-        const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
+        const url = `https://enigmatic-eyrie-33917.herokuapp.com/products/${id}`
         fetch(url, {
             method: "PUT",
             headers: {
@@ -67,7 +67,7 @@ const InventoryItem = () => {
         }
 
       else{
-        const url = `https://still-bastion-50699.herokuapp.com/laptops/${id}`
+        const url = `https://enigmatic-eyrie-33917.herokuapp.com/products/${id}`
         fetch(url, {
             method: "PUT",
             headers: {
@@ -97,7 +97,7 @@ const InventoryItem = () => {
                 <div className="card text-center mb-3" >
                     <div className="row g-0">
                         <div className="col-md-6 col-sm-12">
-                            <img src={furniture.img} className="img-fluid rounded-start  border-bottom" alt="..." />
+                            <img src={furniture.image} className="img-fluid rounded-start  border-bottom" alt="..." />
                             <h3 className="card-title">{furniture.title}</h3>
                         </div>
                         <div className="col-md-6 col-sm-12">

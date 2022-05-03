@@ -107,7 +107,8 @@ const SignIn = () => {
         </div>
 
       </div>
-      <ToastContainer />
+        <ToastContainer closeButton={false} />
+
     </div>
   );
 };

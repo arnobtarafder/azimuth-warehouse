@@ -1,10 +1,10 @@
 import React from 'react';
-import useInventoryProducts from '../../../hooks/useInventoryProducts';
+import useProducts from '../../../hooks/useProducts';
 // import './Inventory.css';
 import Inventory from './Inventory';
 
 const Inventories = () => {
-    const [products] = useInventoryProducts()
+    const [products] = useProducts()
 
     return (
         <div className='row container mx-auto col-12 w-100 h-100'>

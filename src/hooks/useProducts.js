@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 
-const useInventoryProducts = () => {
+const useProducts = () => {
     const [products, setProducts] = useState([]);
 
     useEffect( () => {
-        fetch("https://still-bastion-50699.herokuapp.com/laptops")
+        fetch("https://enigmatic-eyrie-33917.herokuapp.com/products")
         .then(res => res.json())
         .then(data => setProducts(data))
     } ,[])
@@ -12,4 +12,4 @@ const useInventoryProducts = () => {
     return [products, setProducts]
 }
 
-export default useInventoryProducts;
+export default useProducts;

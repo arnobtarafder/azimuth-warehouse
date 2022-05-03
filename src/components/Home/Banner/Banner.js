@@ -5,8 +5,8 @@ import { Scrollbar } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import "./Banner.css";
 import Carousel from 'react-bootstrap/Carousel';
+import "./Banner.module.css";
 
 
 

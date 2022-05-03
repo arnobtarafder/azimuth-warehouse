@@ -18,19 +18,26 @@ const NavigationBar = () => {
 
 
   return (
-    <Navbar sticky="top" expand="lg" bg="light">
+    <Navbar sticky="top" expand="lg" variant="dark" bg="dark">
       <Container>
-        <Navbar.Brand as={Link} to="/">
-          <img height={30} src="https://cdn-icons-png.flaticon.com/128/7380/7380986.png" type="image/x-icon" alt="" />
-          <span className='ps-3 pe-4 text-secondary'>Azimuth Warehouse</span>
+        <Navbar.Brand href="/home">
+          <img
+            alt=""
+            src="https://cdn-icons-png.flaticon.com/128/7380/7380986.png"
+            width="30"
+            height="30"
+            className="d-inline-block align-top"
+          />{' '}
+          Azimuth Warehouse
         </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className='text-dark' as={Link} to="/home">Home</Nav.Link>
-            <Nav.Link className='text-dark' as={Link} to="/blogs">Blogs</Nav.Link>
-            <Nav.Link className='text-dark' as={Link} to="/inventories">Inventory</Nav.Link>
+            <Nav.Link className='text-white' as={Link} to="/home">Home</Nav.Link>
+            <Nav.Link className='text-white' as={Link} to="/blogs">Blogs</Nav.Link>
+            <Nav.Link className='text-white' as={Link} to="/inventories">Inventory</Nav.Link>
 
           </Nav>
 
@@ -44,7 +51,7 @@ const NavigationBar = () => {
 
                 <NavDropdown title="Inventory Management" id="collapsible-nav-dropdown">
 
-                  <NavDropdown.Item as={Link} to="/inventory">My Inventory</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/MyInventory">My Inventory</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/manageInventory">Manage Inventory</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/addItems">Add Items</NavDropdown.Item>
 
