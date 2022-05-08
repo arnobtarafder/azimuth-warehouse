@@ -27,6 +27,7 @@ const InventoryItem = () => {
         );
     }
 
+ 
     const delivered = (e) => {
         const product_name = product.product_name;
         const image = product.image;
@@ -35,7 +36,7 @@ const InventoryItem = () => {
         const quantity = parseInt(product.quantity) - 1;
         const email = product.email;
         const supplyar_name = product.supplyar_name;
-        const confirm = window.confirm("Are you sure! You want to delivered");
+        const confirm = window.confirm("Are you sure! You want to deliver the product");
 
 
         const card = {
@@ -47,6 +48,10 @@ const InventoryItem = () => {
             supplyar_name,
             email,
         };
+
+        if(product.quantity === 0 || product.quantity < 0) {
+            return alert("Sorry! Stock Out");
+        }    
 
         if (!confirm) {
             return;
@@ -86,7 +91,7 @@ const InventoryItem = () => {
         if (!inputValue) {
             return toast.error("Please Give a Valid Value");
         }
-        if (inputValue < 0) {
+        if (inputValue <= 0) {
             return toast.error("Please Update a Positive Value");
         }
 

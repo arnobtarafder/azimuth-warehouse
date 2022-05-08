@@ -12,6 +12,7 @@ import ManageInventory from './components/Inventory/ManageInventory/ManageInvent
 import MyInventory from './components/Inventory/MyInventory/MyInventory';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import NotFound from './components/NotFound/NotFound';
+import PrivateAuth from './components/PrivateAuth/PrivateAuth';
 
 function App() {
   return (
@@ -26,10 +27,23 @@ function App() {
         <Route path='/signUp' element={<SignUp />}></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
         <Route path='/inventories' element={<Inventories />}></Route>
-        <Route path='/inventory/:id' element={<InventoryItem />}></Route>
-        <Route path='/addItem' element={<AddItem />}></Route>
-        <Route path='/manageInventory' element={<ManageInventory />}></Route>
-        <Route path='/MyInventory' element={<MyInventory />}></Route>
+
+        <Route path='/inventory/:id' element={<PrivateAuth>
+          <InventoryItem />
+        </PrivateAuth>}></Route>
+
+        <Route path='/addItem' element={<PrivateAuth>
+          <AddItem />
+        </PrivateAuth>}></Route>
+
+        <Route path='/manageInventory' element={<PrivateAuth>
+          <ManageInventory />
+        </PrivateAuth>}></Route>
+
+        <Route path='/MyInventory' element={<PrivateAuth>
+          <MyInventory />
+        </PrivateAuth>}></Route>
+
         <Route path='*' element={<NotFound />}></Route>
       </Routes>
 

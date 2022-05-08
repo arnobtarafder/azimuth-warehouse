@@ -16,7 +16,7 @@ const PrivateAuth = ({ children }) => {
   }
 
   if (!user) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return <Navigate to="/signIn" state={{ from: location }} replace />;
   }
   return children;
 };

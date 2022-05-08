@@ -35,9 +35,9 @@ const NavigationBar = () => {
 
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link className='text-white' as={Link} to="/home">Home</Nav.Link>
-            <Nav.Link className='text-white' as={Link} to="/blogs">Blogs</Nav.Link>
-            <Nav.Link className='text-white' as={Link} to="/inventories">Inventory</Nav.Link>
+            <Nav.Link className='text-white text-start' as={Link} to="/home">Home</Nav.Link>
+            <Nav.Link className='text-white text-start' as={Link} to="/blogs">Blogs</Nav.Link>
+            <Nav.Link className='text-white text-start' as={Link} to="/inventories">Inventory</Nav.Link>
 
           </Nav>
 
@@ -49,7 +49,7 @@ const NavigationBar = () => {
               <>
 
 
-                <NavDropdown title="Inventory Management" id="collapsible-nav-dropdown">
+                <NavDropdown title="Inventory Management" id="collapsible-nav-dropdown" className='text-start'>
 
                   <NavDropdown.Item as={Link} to="/MyInventory">My Inventory</NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/manageInventory">Manage Inventory</NavDropdown.Item>
@@ -71,7 +71,7 @@ const NavigationBar = () => {
 
               {
                 user ?
-                  <Link to='/' className='nav-link'>
+                  <Link to='/' className='nav-link  text-start'>
                     <button onClick={handleSignOut}
                       className='btn btn-outline-secondary px-2 btn-rounded rounded-3'
                     >
@@ -79,7 +79,7 @@ const NavigationBar = () => {
                     </button>
                   </Link>
                   :
-                  <Link to='/signUp' className='nav-link'>
+                  <Link to='/signUp' className='nav-link text-start'>
                     <button
                       className='btn btn-outline-secondary px-2 rounded-3'
                     >
