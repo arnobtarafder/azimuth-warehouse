@@ -39,6 +39,7 @@ The following open source packages are used in this project:
 * React Helmet Async
 * React Hook Form
 * React Icons
+* Sweet Alert 2
 * Axios
 * JSON web token
 

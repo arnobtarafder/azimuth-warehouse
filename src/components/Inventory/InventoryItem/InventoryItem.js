@@ -57,6 +57,7 @@ const InventoryItem = () => {
         if (!confirm) {
             return;
         }
+        
         if (quantity == -1) {
             return toast.error("Please! Add The Product Quantity");
         }

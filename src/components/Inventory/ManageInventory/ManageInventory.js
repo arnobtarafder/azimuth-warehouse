@@ -11,6 +11,8 @@ import Footer from '../../Footer/Footer';
 import userEvent from '@testing-library/user-event';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import Swal from "sweetalert2";
+
 
 
 const ManageInventory = () => {
@@ -34,23 +36,32 @@ const ManageInventory = () => {
         );
     }
     const handleDelete = (id) => {
-        const confirm = window.confirm('Do you want to delete the item?')
+        // const confirm = window.confirm('Do you want to delete the item?')
 
-        if (!confirm) {
-            return;
-        }
+        // if (!confirm) {
+        //     return;
+        // }
 
-        else {
-            const url = `https://enigmatic-eyrie-33917.herokuapp.com/product/${id}`;
-            fetch(url, {
-                method: "DELETE"
-            })
-                .then(res => res.json())
-                .then(data => {
-                    toast.success("Successfully has deleted the item")
-                    setIsReload(!isReload);
-                })
-        }
+        Swal.fire({
+            title: "Do you want to delete the item?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Delete It!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              const url = `https://enigmatic-eyrie-33917.herokuapp.com/product/${id}`;
+              fetch(url, {
+                method: "DELETE",
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  toast.success("The item has successfully deleted");
+                  setIsReload(!isReload);
+                });
+            }
+          });
     }
 
     const handleAddInventory = () => {
