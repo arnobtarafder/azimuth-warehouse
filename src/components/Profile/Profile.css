@@ -1,0 +1,17 @@
+.profile-section {
+    background: rgb(9, 190, 100)
+}
+
+.profile-form-control:focus {
+    box-shadow: none;
+    border-color: rgb(9, 190, 100)
+}
+
+.back:hover {
+    color:  rgb(9, 190, 100);
+    cursor: pointer;
+}
+
+.labels {
+    font-size: 11px
+}

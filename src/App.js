@@ -13,6 +13,7 @@ import MyInventory from './components/Inventory/MyInventory/MyInventory';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import NotFound from './components/NotFound/NotFound';
 import PrivateAuth from './components/PrivateAuth/PrivateAuth';
+import Profile from './components/Profile/Profile';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/home' element={<Home />}></Route>
         <Route path='/signIn' element={<SignIn />}></Route>
         <Route path='/signUp' element={<SignUp />}></Route>
+        <Route path='/userProfile' element={<Profile />}></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
         <Route path='/inventories' element={<Inventories />}></Route>
 
