@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import Loading from "../../Loading/Loading";
 import { Helmet } from 'react-helmet-async';
 import Footer from "../../Footer/Footer";
+import Swal from "sweetalert2";
+
 
 
 const InventoryItem = () => {
@@ -37,46 +39,53 @@ const InventoryItem = () => {
         const quantity = parseInt(product.quantity) - 1;
         const email = product.email;
         const supplyar_name = product.supplyar_name;
-        const confirm = window.confirm("Are you sure! You want to deliver the product");
+        // const confirm = window.confirm("Are you sure! You want to deliver the product");
 
 
-        const card = {
-            product_name,
-            image,
-            description,
-            price,
-            quantity,
-            supplyar_name,
-            email,
-        };
+        Swal.fire({
+            title: "Do you want to deliver the item?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Deliver It!",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              if (quantity == -1) {
+                return toast.error("please add the product quantity");
+              }
 
-        if(product.quantity === 0 || product.quantity < 0) {
-            return alert("Sorry! Stock Out");
-        }    
-
-        if (!confirm) {
-            return;
-        }
-        
-        if (quantity == -1) {
-            return toast.error("Please! Add The Product Quantity");
-        }
-
-        else {
-            fetch(`https://enigmatic-eyrie-33917.herokuapp.com/product/${id}`, {
+              if(product.quantity === 0 || product.quantity < 0) {
+                return Swal.fire({
+                    title: "Sorry! stock Out",
+                    icon: "warning"});
+            }    
+      
+              const card = {
+                product_name,
+                image,
+                description,
+                price,
+                quantity,
+                supplyar_name,
+                email,
+              };
+              fetch(`https://enigmatic-eyrie-33917.herokuapp.com/product/${id}`, {
                 method: "PUT",
                 headers: {
-                    "content-type": "application/json",
+                  "content-type": "application/json",
                 },
                 body: JSON.stringify(card),
-            })
+              })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
-                    toast.success(`${1} Product Has Successfully Delivered`);
-                    setIsReload(!isReload);
+                  console.log(data);
+                  toast.success(`${1} product delivered successfully`);
+                  setIsReload(!isReload);
                 });
-        }
+            }
+          });
+
     };
 
     const handleUpdate = (e) => {

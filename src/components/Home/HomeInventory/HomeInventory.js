@@ -11,7 +11,7 @@ const HomeInventory = ({ product, children }) => {
         quantity,
         supplyar_name,
         _id,
-      } = product;
+    } = product;
 
     const navigateToProductDetail = id => {
         navigate(`/inventory/${id}`)
@@ -26,14 +26,27 @@ const HomeInventory = ({ product, children }) => {
                     <div className="img-wrap" data-abc={true}>
                         <img className='img-fluid w-100 h-100 image-rounded' src={product.image} alt="" />
                     </div>
+                    <h4 className="title text-center">{product_name}</h4>
+                    <figcaption className="info-wrap text-start">
+                        <div className="row">
+                            <p className="mt-1 text-lg text-gray-600 my-2">
+                                {product?.description.slice(0, 100)}
+                                {product?.description.length > 100 && (
+                                    <span title={`${product.description}`}>...</span>
+                                )}
+                            </p>
+
+                        </div>
+                    </figcaption>
+
                     <figcaption className="info-wrap">
                         <div className="row">
                             <div className="col-md-12 col-xs-12">
-                                <h4 className="title">{product.name}</h4>
                                 <h6 className="text-left fw-lighter ps-0 pb-0">Supplier: {product.supplyar_name}</h6> </div>
 
                         </div>
                     </figcaption>
+
                     <div className="bottom-wrap-payment">
                         <figcaption className="info-wrap">
                             <div className="row">
