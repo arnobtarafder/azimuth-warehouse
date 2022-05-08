@@ -62,7 +62,7 @@ const ManageInventory = () => {
     }
 
     return (
-        <div>
+        <div className='container'>
             {/* <div className='container  p-5 table-responsive-sm'> */}
                 <Helmet>
                     <title>Manage Inventory | Azimuth Warehouse</title>

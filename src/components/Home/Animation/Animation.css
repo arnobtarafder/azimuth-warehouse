@@ -1,5 +1,6 @@
 .animation-section {
   position: relative;
+  overflow-x: hidden;
 }
 .animation-section .animation-background {
     bottom: 0;

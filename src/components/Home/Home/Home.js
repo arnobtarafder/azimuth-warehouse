@@ -11,7 +11,7 @@ import Footer from '../../Footer/Footer.js';
 
 const Home = () => {
     return (
-        <div>
+        <div className='overflow-hidden'>
             <Helmet>
                 <title>Home | Azimuth Warehouse</title>
             </Helmet>

@@ -35,6 +35,7 @@ const MyInventory = () => {
     };
     getOrders();
   }, [user, isReload]);
+
   // if (addProduct.length === 0) {
   //   return (
   //     <div>
@@ -42,6 +43,8 @@ const MyInventory = () => {
   //     </div>
   //   );
   // }
+
+  
   const handleDelete = (id) => {
     const confirm = window.confirm("Are you sure you want to delete");
     if (!confirm) {
@@ -59,7 +62,7 @@ const MyInventory = () => {
   return (
     <div className="bg-white">
       <h2 className="text-center text-3xl italic text-gray-700 font-bold mt-4">
-        Total added product {addProduct.length}
+        My Inventory Products {addProduct.length}
       </h2>
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Products</h2>
