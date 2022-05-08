@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import useProducts from "../../../hooks/useProducts";
 import Loading from "../../Loading/Loading";
 import { Helmet } from 'react-helmet-async';
+import "./ManageInventory.css"
+import Footer from '../../Footer/Footer';
 
 
 const ManageInventory = () => {
@@ -14,23 +16,23 @@ const ManageInventory = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-      const url = "https://enigmatic-eyrie-33917.herokuapp.com/products";
-      fetch(url)
-        .then((res) => res.json())
-        .then((data) => setProducts(data));
+        const url = "https://enigmatic-eyrie-33917.herokuapp.com/products";
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => setProducts(data));
     }, [isReload]);
     // console.log(products);
     if (products.length === 0) {
-      return (
-        <div>
-          <Loading />
-        </div>
-      );
+        return (
+            <div>
+                <Loading />
+            </div>
+        );
     }
     const handleDelete = (id) => {
         const confirm = window.confirm('Are you sure?')
 
-        if(!confirm) {
+        if (!confirm) {
             return;
         }
 
@@ -51,6 +53,10 @@ const ManageInventory = () => {
         navigate("/addItem")
     }
 
+    const handleUpdate = () => {
+        navigate("/inventory/:id")
+    }
+
     return (
         <div>
             <div className='container  p-5 table-responsive-sm'>
@@ -58,37 +64,28 @@ const ManageInventory = () => {
                     <title>Manage Inventory | Azimuth Warehouse</title>
                 </Helmet>
 
-                <Table className='table table-bordered  align-middle' responsive="sm">
-                    <thead>
-                        <tr>
-                            {/* <th>ID</th> */}
-                            <th>Name</th>
-                            <th>Supplier</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            {/* <th>Supplied By</th> */}
-                            <th>Manage Your Product</th>
-                        </tr>
-                    </thead>
-                    {
-                        products.map(product => <>
-                            <tbody key={product._id}>
-                                <tr>
-                                    {/* <td>{product._id}</td> */}
-                                    <td>{product?.product_name}</td>
-                                    <td>{product?.supplyar_name}</td>
-                                    <td>{product?.price}</td>
-                                    <td>{product?.quantity}</td>
-                                    {/* <td>Table cell</td> */}
-                                    <td className='d-flex justify-content-around'><Button onClick={() => handleDelete(product._id)} variant="outline-danger ">Delete</Button>
+                <div className='manage-card-information-container'>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </>
-                        )
+                    {
+                        products.map(product => <div key={product._id}>
+                            <div className="manage-img"><img src={product?.image ? product?.image : 'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png'} alt="" /></div>
+                            <div className="-manage-card-information">
+                                <h3>Name : {product?.product_name}</h3>
+                                <p>Price : ${product?.price}</p>
+                                <p>Supplier: {product?.supplyar_name}</p>
+                                <p> Quantiity : {product?.quantity}</p>
+
+                            </div>
+                            <div className="manage-buttons">
+                                <button onClick={() => handleDelete(product._id)} className='manage-delete-button'>Delete</button>
+                                <button onClick={handleUpdate} className='manage-update-button'>Update</button>
+                            </div>
+                        </div>)
                     }
-                </Table>
+
+                </div>
+
+
 
                 <div className='text-center mt-5'>
                     <Button className='px-5 py-2' onClick={handleAddInventory} variant="outline-success">Add New Item</Button>
@@ -96,8 +93,44 @@ const ManageInventory = () => {
             </div>
 
             <ToastContainer />
+
+            <Footer />
         </div >
     );
 };
 
 export default ManageInventory;
+
+
+
+{/* <Table className='table table-bordered  align-middle' responsive="sm">
+<thead>
+    <tr>
+        {/* <th>ID</th> */}
+//         <th>Name</th>
+//         <th>Supplier</th>
+//         <th>Price</th>
+//         <th>Quantity</th>
+//         {/* <th>Supplied By</th> */}
+//         <th>Manage Your Product</th>
+//     </tr>
+// </thead>
+// {
+//     products.map(product => <>
+//         <tbody key={product._id}>
+//             <tr>
+//                 {/* <td>{product._id}</td> */}
+//                 <td>{product?.product_name}</td>
+//                 <td>{product?.supplyar_name}</td>
+//                 <td>{product?.price}</td>
+//                 <td>{product?.quantity}</td>
+//                 {/* <td>Table cell</td> */}
+//                 <td className='d-flex justify-content-around'><Button onClick={() => handleDelete(product._id)} variant="outline-danger ">Delete</Button>
+
+//                 </td>
+//             </tr>
+//         </tbody>
+//     </>
+//     )
+// }
+// </Table> */}

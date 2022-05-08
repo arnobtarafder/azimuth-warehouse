@@ -1,14 +1,14 @@
-.footer-section {
+.animation-section {
   position: relative;
 }
-.footer-section .footer_bg {
+.animation-section .animation-background {
     bottom: 0;
     background: url("http://droitthemes.com/html/saasland/img/seo/footer_bg.png") no-repeat scroll center 0;
     width: 100%;
     height: 266px;
   }
   
-  .footer-section .footer_bg .footer_bg_one {
+  .animation-section .animation-background .animation_background_one {
     background: url("https://1.bp.blogspot.com/-mvKUJFGEc-k/XclCOUSvCnI/AAAAAAAAUAE/jnBSf6Fe5_8tjjlKrunLBXwceSNvPcp3wCLcBGAsYHQ/s1600/volks.gif") no-repeat center center;
     width: 330px;
     height: 105px;
@@ -20,7 +20,7 @@
     animation: myfirst 22s linear infinite;
   }
   
-  .footer-section .footer_bg .footer_bg_two {
+  .animation-section .animation-background .animation_background_two {
     background: url("https://1.bp.blogspot.com/-hjgfxUW1o1g/Xck--XOdlxI/AAAAAAAAT_4/JWYFJl83usgRFMvRfoKkSDGd--_Sv04UQCLcBGAsYHQ/s1600/cyclist.gif") no-repeat center center;
     width: 88px;
     height: 100px;

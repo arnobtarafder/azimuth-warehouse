@@ -1,0 +1,83 @@
+.manage-card-information-container {
+    width: 700px;
+    margin: 20px 0px;
+    height: 200px;
+    padding: 0px 20px;
+    -webkit-box-shadow: 5px 5px 15px -5px #000000;
+    box-shadow: 5px 5px 15px -5px #000000;
+    transition: 0.5s;
+}
+
+.manage-card-information-container:hover {
+    transform: scale(1.05);
+}
+
+.manage-card-information-container {
+    display: flex;
+    align-items: center;
+
+}
+
+.manage-img img {
+    width: 250px;
+}
+
+.manage-card-information {
+    display: flex;
+    justify-content: center;
+
+    flex-direction: column;
+    margin: 0px 20px;
+}
+
+.manage-delete-button {
+    display: block;
+    margin: 20px 0px;
+    width: 150px;
+    padding: 10px 0px;
+    border: none;
+    background-color: rgba(255, 0, 0, 0.61);
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.manage-delete-button:hover {
+    background-color: rgba(255, 0, 0, 0.486);
+}
+
+.manage-update-button {
+    border-radius: 5px;
+    display: block;
+    margin: 20px 0px;
+    width: 150px;
+    padding: 10px 0px;
+    border: none;
+    background-color: #006E7F;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.manage-update-button:hover {
+    background-color: #006e7fc2;
+}
+
+@media only screen and (max-width: 600px) {
+    .manage-card-information-container {
+        width: 300px;
+        height: auto;
+        padding: 20px 0px;
+    }
+
+    .manage-img img {
+        width: 150px;
+    }
+
+    .manage-card-information-container {
+        flex-direction: column;
+    }
+}

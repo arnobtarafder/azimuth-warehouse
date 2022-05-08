@@ -6,6 +6,7 @@ import Banner from '../Banner/Banner.js';
 import Brands from '../Brands/Brands.js';
 import HomeInventories from '../HomeInventories/HomeInventories.js';
 import { Helmet } from 'react-helmet-async';
+import Footer from '../../Footer/Footer.js';
 
 
 const Home = () => {
@@ -28,6 +29,8 @@ const Home = () => {
             <Brands />
 
             <Animation />
+
+            <Footer />
         </div>
     );
 };

@@ -3,6 +3,7 @@ import { Table } from 'react-bootstrap'
 import Blog from './Blog'
 import './Blogs.module.css'
 import { Helmet } from 'react-helmet-async'
+import Footer from '../Footer/Footer'
 
 
 
@@ -41,7 +42,8 @@ const Blogs = () => {
 
 
     return (
-        <div className="blogs-container bg-img container">
+      <section>
+            <div className="blogs-container bg-img container">
             <Helmet>
                 <title>Blogs | Azimuth Warehouse</title>
             </Helmet>
@@ -185,6 +187,9 @@ const Blogs = () => {
                 </div>
             </div>
         </div>
+
+        <Footer />
+      </section>
     )
 };
 

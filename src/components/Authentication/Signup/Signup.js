@@ -12,6 +12,7 @@ import Loading from "../../Loading/Loading";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import './SignUp.css';
 import { Helmet } from 'react-helmet-async';
+import Footer from "../../Footer/Footer";
 
 
 
@@ -63,7 +64,8 @@ const SignUp = () => {
     navigate(from, { replace: true });
   }
   return (
-    <div className="form-body container mx-auto">
+    <section>
+      <div className="form-body container mx-auto">
       <Helmet>
         <title>Sign up | Azimuth Warehouse</title>
       </Helmet>
@@ -139,7 +141,12 @@ const SignUp = () => {
       </div>
 
       <ToastContainer />
+
+
     </div>
+    
+      <Footer />
+    </section>
   );
 };
 

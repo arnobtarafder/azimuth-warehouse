@@ -4,6 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import auth from "../../../firebase.init";
 import { Helmet } from 'react-helmet-async';
+import Footer from "../../Footer/Footer";
 
 
 
@@ -45,7 +46,8 @@ const AddItem = () => {
 
 
   return (
-    <div className="w-100">
+   <section>
+      <div className="w-100">
       <Helmet>
         <title>Add Item | Azimuth Warehouse</title>
       </Helmet>
@@ -121,6 +123,9 @@ const AddItem = () => {
 
       <ToastContainer />
     </div>
+
+    <Footer />
+   </section>
   );
 };
 

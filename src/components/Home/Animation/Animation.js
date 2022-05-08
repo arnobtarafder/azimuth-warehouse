@@ -3,11 +3,11 @@ import './Animation.css'
 
 const Animation = () => {
     return (
-        <div className="footer-section">
+        <div className="animation-section mt-5">
             <div className="container">
-            <div className="footer_bg">
-                <div className="footer_bg_one"></div>
-                <div className="footer_bg_two"></div>
+            <div className="animation-background">
+                <div className="animation_background_one"></div>
+                <div className="animation_background_two"></div>
             </div>
             </div>
         </div>

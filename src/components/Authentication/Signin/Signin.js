@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import auth from "../../../firebase.init";
 import Social from "./Social";
 import { Helmet } from 'react-helmet-async';
+import Footer from "../../Footer/Footer";
 
 
 const SignIn = () => {
@@ -126,7 +127,10 @@ const SignIn = () => {
       </div>
 
       <ToastContainer />
+      
+      <Footer />
     </div>
+
   );
 };
 

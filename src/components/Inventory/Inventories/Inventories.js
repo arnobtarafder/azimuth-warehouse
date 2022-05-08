@@ -3,13 +3,15 @@ import useProducts from '../../../hooks/useProducts';
 import './Inventory.css';
 import Inventory from './Inventory';
 import { Helmet } from 'react-helmet-async';
+import Footer from '../../Footer/Footer';
 
 
 const Inventories = () => {
     const [products] = useProducts()
 
     return (
-        <div className='row container mx-auto col-12 w-100 h-100'>
+        <section>
+            <div className='row container mx-auto col-12 w-100 h-100'>
             <Helmet>
                 <title>Inventories | Azimuth Warehouse</title>
             </Helmet>
@@ -22,6 +24,9 @@ const Inventories = () => {
                 }
             </div>
         </div>
+
+        <Footer />
+        </section>
     );
 };
 

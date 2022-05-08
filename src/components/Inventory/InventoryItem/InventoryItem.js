@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from "../../Loading/Loading";
 import { Helmet } from 'react-helmet-async';
+import Footer from "../../Footer/Footer";
 
 
 const InventoryItem = () => {
@@ -121,7 +122,8 @@ const InventoryItem = () => {
         e.target.reset();
     };
     return (
-        <div className="max-w-lg mx-auto mt-4">
+       <section>
+            <div className="max-w-lg mx-auto mt-4">
             <Helmet>
                 <title>Single Item | Azimuth Warehouse</title>
             </Helmet>
@@ -174,6 +176,9 @@ const InventoryItem = () => {
 
             <ToastContainer />
         </div>
+
+        <Footer />
+       </section>
     );
 };
 
