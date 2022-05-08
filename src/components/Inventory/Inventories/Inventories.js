@@ -11,7 +11,7 @@ const Inventories = () => {
 
     return (
         <section>
-            <div className='row container mx-auto col-12 w-100 h-100'>
+            <div className='row container mx-auto col-12 w-100 h-100 mb-5'>
             <Helmet>
                 <title>Inventories | Azimuth Warehouse</title>
             </Helmet>

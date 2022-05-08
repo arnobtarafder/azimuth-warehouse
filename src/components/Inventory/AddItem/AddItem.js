@@ -10,6 +10,7 @@ import Footer from "../../Footer/Footer";
 
 const AddItem = () => {
   const [user] = useAuthState(auth);
+  
   const handleAddProduct = (e) => {
     e.preventDefault();
     const product_name = e.target.name.value;
@@ -18,14 +19,15 @@ const AddItem = () => {
     const price = e.target.price.value;
     const quantity = e.target.quantity.value;
     const email = e.target.email.value;
-    // const supplier = e.target.supplier_name.value;
+    const supplier = user?.displayName;
+
     const card = {
       product_name,
       image,
       description,
       price,
       quantity,
-      // supplier,
+      supplier,
       email,
     };
 

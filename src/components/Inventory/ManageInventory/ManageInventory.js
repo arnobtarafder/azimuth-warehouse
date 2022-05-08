@@ -8,9 +8,13 @@ import Loading from "../../Loading/Loading";
 import { Helmet } from 'react-helmet-async';
 import "./ManageInventory.css"
 import Footer from '../../Footer/Footer';
+import userEvent from '@testing-library/user-event';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
 
 const ManageInventory = () => {
+    const [user] = useAuthState(auth);
     const [products, setProducts] = useState([]);
     const [isReload, setIsReload] = useState(false);
     const navigate = useNavigate()
@@ -30,7 +34,7 @@ const ManageInventory = () => {
         );
     }
     const handleDelete = (id) => {
-        const confirm = window.confirm('Are you sure?')
+        const confirm = window.confirm('Do you want to delete the item?')
 
         if (!confirm) {
             return;
@@ -53,37 +57,45 @@ const ManageInventory = () => {
         navigate("/addItem")
     }
 
-    const handleUpdate = () => {
-        navigate("/inventory/:id")
+    const handleUpdate = (id) => {
+        navigate(`/inventory/${id}`)
     }
 
     return (
         <div>
-            <div className='container  p-5 table-responsive-sm'>
+            {/* <div className='container  p-5 table-responsive-sm'> */}
                 <Helmet>
                     <title>Manage Inventory | Azimuth Warehouse</title>
                 </Helmet>
 
-                <div className='manage-card-information-container'>
+                <div className='container mb-5'>
 
                     {
-                        products.map(product => <div key={product._id}>
-                            <div className="manage-img"><img src={product?.image ? product?.image : 'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png'} alt="" /></div>
-                            <div className="-manage-card-information">
-                                <h3>Name : {product?.product_name}</h3>
-                                <p>Price : ${product?.price}</p>
-                                <p>Supplier: {product?.supplyar_name}</p>
-                                <p> Quantiity : {product?.quantity}</p>
+                        products.map(product => <div>
+                            
+                            <div className='card-info-container mx-auto'>
+                            <div className="img">
+                                <img src={product.image ? product.image : 'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png'} alt="" />
+                                </div>
 
+                            <div className="card-info text-start me-auto">
+                                <h3>Name : {product?.product_name}</h3>
+                                <h3>Supplier : {user?.displayName}</h3>
+                                <p>Price : ${product?.price} </p>
+                                <p> Quantiity : {product?.quantity}</p>
+                
                             </div>
-                            <div className="manage-buttons">
+
+                            <div className="manage-buttons ms-3">
                                 <button onClick={() => handleDelete(product._id)} className='manage-delete-button'>Delete</button>
-                                <button onClick={handleUpdate} className='manage-update-button'>Update</button>
+                                <button onClick={() => handleUpdate(product._id)} className='manage-update-button'>Update</button>
                             </div>
+                
+                        </div>
                         </div>)
                     }
 
-                </div>
+                {/* </div> */}
 
 
 
